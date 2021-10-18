@@ -1,0 +1,98 @@
+body{
+    margin:0px;
+    box-sizing: border-box;
+    font-family: 'Ubuntu', sans-serif;
+    overflow-x: hidden;
+}
+
+/* Navbar styling */
+.nav-container{
+    display: flex;
+    height: 10vh;
+    align-items: center;
+    background-color: rgb(1, 1, 15);
+    justify-content: space-between;
+    margin:0
+    }
+    .nav-left{
+        display: flex;
+        align-items: center;
+    }
+    .flash-logo{
+        height:8vh;
+        margin-left: 20px;
+    }
+    .flash-logo-text{
+        font-family: 'Mukta', sans-serif;
+        font-size: 30px;
+        letter-spacing: 1px; 
+        margin:0 10px;
+        color:wheat
+    
+    }
+    .nav-right{
+    margin-right: 50px;
+    }
+    .code-link{
+        color:wheat;
+        font-size: 20px;
+        text-decoration: none;
+    }
+    /* landing section styling */
+    .landing-container{
+        display: flex;
+        min-height: 100vh;
+        justify-content: space-between;
+        align-items: center;
+        margin:0px;
+        padding:0 32px;
+        flex-wrap: wrap;
+    }
+    
+    /* footer styling */
+
+    .footer-container{
+        display: flex;
+        justify-content: space-between;
+        margin:0px;
+        background-color: rgb(3, 3, 26);
+        align-items: center;
+        height: 10vh;
+        flex-wrap: wrap;
+    }
+    
+ 
+    .icons{
+        width:30vw;
+    display: flex;
+    margin-right: 2vw;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    }
+    .about{
+        width:30vw;
+        display:flex;
+        justify-content: space-between;
+        margin-left: 2vw;
+        text-decoration: none;
+        flex-wrap: wrap;
+    }
+    .link{
+        font-size: 20px;
+        color:wheat;
+        text-decoration: none;
+    }
+    @media  (max-width:800px){
+        .footer-container{
+            height:18vh;
+            flex-direction: column;
+            align-items: center;
+            justify-content:space-around;
+        }
+        .icons{
+            width:90vw;
+        }
+        .about{
+            width: 90vw;
+        }
+    }
