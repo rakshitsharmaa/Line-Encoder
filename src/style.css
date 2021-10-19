@@ -70,10 +70,12 @@ body{
     min-height: 400px;
     margin:72px;
   }
-  [hidden] {
-    display: block !important;
-  }
   
+  .text{
+      text-align:center;
+      font-weight: 800;
+      line-height: 7vh;
+  }
 
 
     /* bottom input panel styling */
