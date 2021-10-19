@@ -53,12 +53,34 @@ body{
         height: 60vh;
         margin-bottom: 10vh;
     }
+   /* data input container */
+  .data-container1{
+      display: none;
+    width:80vw;
+    background-color: rgba(112, 102, 102, 0.952);
+    min-height: 400px;
+    margin:72px;
+  }
+   .data-container2{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width:80vw;
+    background-color: rgba(112, 102, 102, 0.952);
+    min-height: 400px;
+    margin:72px;
+  }
+  [hidden] {
+    display: block !important;
+  }
+  
+
 
     /* bottom input panel styling */
 
     .bottom-panel{
         width: 100%;
-        display: flex;
+        display: flex !important;
         flex-direction: column;
         align-items: center;
         justify-content: center;

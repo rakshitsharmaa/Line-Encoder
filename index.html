@@ -47,26 +47,24 @@
             <div class="form-container">
                 <h5 id="bt">Choose Your Digital Data Stream Generation Technique </h5>
                 <div class="form-group1 ">
-                    <select name="" id="list" class="form-control">
+                    <select name="" id="list-type" class="form-control">
                         <option value="completely-random">Completely Random Sequence </option>
-                        <option value="partial-random"> Random Sequence with fixed Sub-Sequences</option>
+                        <option value="sub-sequence"> Random Sequence with fixed Sub-Sequences</option>
 
                     </select>
                 </div>
             </div>
-        </form>
 
-        <form>
             <div class="form-container">
                 <h5 id="bt">Choose Your Encoding Technique </h5>
                 <div class="form-group ">
-                    <select name="" id="list" class="form-control">
-                        <option value="NRZ-Uni">NRZ (NON - RETRUN - TO - ZERO UNIPOLAR) </option>
+                    <select name="" id="list-encoding" class="form-control">
+                        <option value="NRZ-UniNRZ">NRZ (NON - RETRUN - TO - ZERO UNIPOLAR) </option>
                         <option value="NRZ-L">NRZ-L (NON-RETURN-TO-ZERO-LEVEL)</option>
                         <option value="NRZ-I">NRZ-I (NON-RETURN-TO-ZERO-INVERT)</option>
                         <option value="RZ">RZ (RETURN-TO-ZERO)</option>
-                        <option value="mench"> MANCHESTER</option>
-                        <option value="diff-mench">DIFFERENTAIL MANCHESTER</option>
+                        <option value="Mench"> MANCHESTER</option>
+                        <option value="Diff-Mench">DIFFERENTAIL MANCHESTER</option>
                         <option value="AMI">AMI (ALTERNATE MARK INVERSION)</option>
                         <option value="B8ZS"> B8ZS (BIPLOAR WITH 8-ZERO SUBSTITUTION)</option>
                         <option value="HDB3"> HDB3 (HIGH-DENSITY-BIPOLAR 3-ZERO)</option>
@@ -75,6 +73,37 @@
                 <button class="btn btn-success" id="init">Generate</button>
             </div>
         </form>
+
+
+    </div>
+
+
+    <!-- input data container -->
+    <div class="data-container2" id="#dc">
+        <div class="encoding">
+            <p class="text">
+
+            </p>
+        </div>
+        <form>
+            <div class="form-container" id="#binary-data">
+                <h5 id="bt"></h5>
+                <div class="form-group" id="#data">
+                    <input type="text" class="form-control" id="digital data" placeholder="Digital Data">
+                </div>
+                <button class="btn btn-success" id="init">Submit</button>
+            </div>
+
+            <div class="form-container" id="#numzeros">
+                <h5 id="bt"></h5>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="digital data" placeholder="No Of Consecutive Zeros">
+                </div>
+                <button class="btn btn-success" id="init">Submit</button>
+            </div>
+        </form>
+
+
     </div>
 
 
@@ -114,11 +143,11 @@
         </div>
 
     </div>
-    <script src="./src/main.js" async defer></script>
     <script src="https://code.jquery.com/jquery-3.5.0.min.js"
         integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
+    <script src="./src/main.js" async defer></script>
 </body>
 
 </html>
