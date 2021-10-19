@@ -79,7 +79,9 @@ body{
 
 
     /* bottom input panel styling */
-
+    .bp{
+        display: none;
+    }
     .bottom-panel{
         width: 100%;
         display: flex !important;
@@ -109,6 +111,30 @@ body{
     .form-group{
         margin: 2vh 15vw;
     }
+
+
+
+    /* Encoding blocks */
+.uninrz{
+    display: none;
+    width:90vw;
+    background-color: rgba(112, 102, 102, 0.952);
+    min-height: 400px;
+    margin:72px;
+}
+   .NRZ-UniNRZ{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width:90vw;
+    background-color: rgba(112, 102, 102, 0.952);
+    min-height: 400px;
+    margin:72px;
+   }
+
+
+
 
     /* footer styling */
 
