@@ -137,10 +137,184 @@ body{
     margin-left:5vw;
    }
 
+   .nrzl{
+    display: none;
+    width:90vw;
+    background-color:rgba(32, 3, 70, 0.801);
+    color: rgb(182, 145, 78);
+    min-height: 400px;
+    margin:72px;
+}
+   .NRZL{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width:90vw;
+    background-color:rgba(32, 3, 70, 0.801);
+    color: rgb(182, 145, 78);
+    min-height: 400px;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+    margin-left:5vw;
+   }
+
+   
+   .nrzi{
+    display: none;
+    width:90vw;
+    background-color:rgba(32, 3, 70, 0.801);
+    color: rgb(182, 145, 78);
+    min-height: 400px;
+    margin:72px;
+}
+   .NRZI{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width:90vw;
+    background-color:rgba(32, 3, 70, 0.801);
+    color: rgb(182, 145, 78);
+    min-height: 400px;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+    margin-left:5vw;
+   }
+
+   
+   .rz{
+    display: none;
+    width:90vw;
+    background-color:rgba(32, 3, 70, 0.801);
+    color: rgb(182, 145, 78);
+    min-height: 400px;
+    margin:72px;
+}
+   .RZ{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width:90vw;
+    background-color:rgba(32, 3, 70, 0.801);
+    color: rgb(182, 145, 78);
+    min-height: 400px;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+    margin-left:5vw;
+   }
+   
+   .mench{
+    display: none;
+    width:90vw;
+    background-color:rgba(32, 3, 70, 0.801);
+    color: rgb(182, 145, 78);
+    min-height: 400px;
+    margin:72px;
+}
+   .MENCH{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width:90vw;
+    background-color:rgba(32, 3, 70, 0.801);
+    color: rgb(182, 145, 78);
+    min-height: 400px;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+    margin-left:5vw;
+   }
+   
+   .diffmech{
+    display: none;
+    width:90vw;
+    background-color:rgba(32, 3, 70, 0.801);
+    color: rgb(182, 145, 78);
+    min-height: 400px;
+    margin:72px; 
+   }
+   .DIFFMENCH{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width:90vw;
+    background-color:rgba(32, 3, 70, 0.801);
+    color: rgb(182, 145, 78);
+    min-height: 400px;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+    margin-left:5vw;
+   }
+   .ami{
+    display: none;
+    width:90vw;
+    background-color:rgba(32, 3, 70, 0.801);
+    color: rgb(182, 145, 78);
+    min-height: 400px;
+    margin:72px;  
+   }
+   .AMI{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width:90vw;
+    background-color:rgba(32, 3, 70, 0.801);
+    color: rgb(182, 145, 78);
+    min-height: 400px;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+    margin-left:5vw;
+   }
+    .b8zs{
+        display: none;
+        width:90vw;
+        background-color:rgba(32, 3, 70, 0.801);
+        color: rgb(182, 145, 78);
+        min-height: 400px;
+        margin:72px; 
+    }
+    .B8ZS{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width:90vw;
+        background-color:rgba(32, 3, 70, 0.801);
+        color: rgb(182, 145, 78);
+        min-height: 400px;
+        margin-top: 10vh;
+        margin-bottom: 10vh;
+        margin-left:5vw;
+    }
+    .hdb3{
+        display: none;
+        width:90vw;
+        background-color:rgba(32, 3, 70, 0.801);
+        color: rgb(182, 145, 78);
+        min-height: 400px;
+        margin:72px;   
+    }
+    .HDB3{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width:90vw;
+        background-color:rgba(32, 3, 70, 0.801);
+        color: rgb(182, 145, 78);
+        min-height: 400px;
+        margin-top: 10vh;
+        margin-bottom: 10vh;
+        margin-left:5vw;
+    }
    .lps{
        letter-spacing: 2px;
-       font-weight: 600;
-       font-style: 'IM Fell English SC', serif;
+       font-weight: 700;
+   
    }
 
 

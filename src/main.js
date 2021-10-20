@@ -91,7 +91,7 @@ function longest_palindromic_substring(s) {
     return lps;
 }
 
-//on click event Generate button
+//on click event for Generate button
 $("#init").click(function (event) {
 
     encoding_technique = $("#list-encoding").val();
@@ -144,44 +144,100 @@ $("#digitaldata").click(function (event) {
     //method prevent submitting of a form
     event.preventDefault();
     $('#data-container2').remove();
-    $('#UNINRZ').removeClass("uninrz");
-    $('#UNINRZ').addClass("NRZ-UniNRZ");
     var input = $('#digital-data').val();
     input_string_arr = input.split("");
     //These function will do encoding & print    longest palindromic subsequence(lps)  & signal show  
     if (encoding_technique == "NRZ-UniNRZ") {
+        $('#UNINRZ').removeClass("uninrz");
+        $('#UNINRZ').addClass("NRZ-UniNRZ");
         let LPS = [];
         LPS = longest_palindromic_substring(input_string_arr);
         console.log(LPS);
         LPS = LPS.join('');
         console.log(LPS);
-        $('#LPS').text(LPS);
+        $('#LPSuni').text(LPS);
         //uniNrz()                    
     }
     else if (encoding_technique == "NRZ-L") {
-
+        $('#NRZL').removeClass("nrzl");
+        $('#NRZL').addClass("NRZL");
+        let LPS = [];
+        LPS = longest_palindromic_substring(input_string_arr);
+        LPS = LPS.join('');
+        console.log(LPS);
+        $('#LPSnrzl').text(LPS);
+        //NRZL()
 
     }
     else if (encoding_technique == "NRZ-I") {
-
+        $('#NRZL').removeClass("nrzi");
+        $('#NRZI').addClass("NRZI");
+        let LPS = [];
+        LPS = longest_palindromic_substring(input_string_arr);
+        LPS = LPS.join('');
+        console.log(LPS);
+        $('#LPSnrzi').text(LPS);
+        //NRZI()
     }
     else if (encoding_technique == "RZ") {
-
+        $('#RZ').removeClass("rz");
+        $('#RZ').addClass("RZ");
+        let LPS = [];
+        LPS = longest_palindromic_substring(input_string_arr);
+        LPS = LPS.join('');
+        console.log(LPS);
+        $('#LPSrz').text(LPS);
+        //rz()
     }
     else if (encoding_technique == "Mench") {
-
+        $('#MENCH').removeClass("mench");
+        $('#MENCH').addClass("MENCH");
+        let LPS = [];
+        LPS = longest_palindromic_substring(input_string_arr);
+        LPS = LPS.join('');
+        console.log(LPS);
+        $('#LPSmench').text(LPS);
+        //Mech()
     }
     else if (encoding_technique == "Diff-Mench") {
-
+        $('#DIFFMENCH').removeClass("diffmench");
+        $('#DIFFMENCH').addClass("DIFFMENCH");
+        let LPS = [];
+        LPS = longest_palindromic_substring(input_string_arr);
+        LPS = LPS.join('');
+        console.log(LPS);
+        $('#LPSdiffmench').text(LPS);
+        //Diff Mench()
     }
     else if (encoding_technique == "AMI") {
-
+        $('#AMI').removeClass("ami");
+        $('#RZ').addClass("AMI");
+        let LPS = [];
+        LPS = longest_palindromic_substring(input_string_arr);
+        LPS = LPS.join('');
+        console.log(LPS);
+        $('#LPSami').text(LPS);
+        //AMI()
     }
     else if (encoding_technique == "B8ZS") {
-
+        $('#B8ZS').removeClass("b8zs");
+        $('#B8ZS').addClass("b8zs");
+        let LPS = [];
+        LPS = longest_palindromic_substring(input_string_arr);
+        LPS = LPS.join('');
+        console.log(LPS);
+        $('#LPSb8zs').text(LPS);
+        //B8ZS()
     }
     else if (encoding_technique == "HDB3") {
-
+        $('#HDB3').removeClass("hdb3");
+        $('#HDB3').addClass("HDB3");
+        let LPS = [];
+        LPS = longest_palindromic_substring(input_string_arr);
+        LPS = LPS.join('');
+        console.log(LPS);
+        $('#LPShdb3').text(LPS);
+        //HDB3()
     }
 });
 
@@ -189,39 +245,101 @@ $("#digitaldata").click(function (event) {
 $("#conszeros").click(function (event) {
     event.preventDefault();
     $('#data-container2').remove();
-    $('#UNINRZ').removeClass("uninrz");
-    $('#UNINRZ').addClass("NRZ-UniNRZ");
     var nums = $("#numzr").val();
     console.log(nums);
     let Arr = [];   //temp array
     Arr = fixedSubSequence(nums);
     console.log(Arr);
     if (encoding_technique == "NRZ-UniNRZ") {
-
+        $('#UNINRZ').removeClass("uninrz");
+        $('#UNINRZ').addClass("NRZ-UniNRZ");
+        let LPS = [];
+        LPS = longest_palindromic_substring(Arr);
+        console.log(LPS);
+        LPS = LPS.join('');
+        console.log(LPS);
+        $('#LPSuni').text(LPS);
+        //uniNrz()      
     }
     else if (encoding_technique == "NRZ-L") {
-
+        $('#NRZL').removeClass("nrzl");
+        $('#NRZL').addClass("NRZL");
+        let LPS = [];
+        LPS = longest_palindromic_substring(Arr);
+        LPS = LPS.join('');
+        console.log(LPS);
+        $('#LPSnrzl').text(LPS);
+        //NRZL()
     }
     else if (encoding_technique == "NRZ-I") {
-
+        $('#NRZI').removeClass("nrzi");
+        $('#NRZI').addClass("NRZI");
+        let LPS = [];
+        LPS = longest_palindromic_substring(Arr);
+        LPS = LPS.join('');
+        console.log(LPS);
+        $('#LPSnrzi').text(LPS);
+        //NRZI()
     }
     else if (encoding_technique == "RZ") {
-
+        $('#RZ').removeClass("rz");
+        $('#RZ').addClass("RZ");
+        let LPS = [];
+        LPS = longest_palindromic_substring(Arr);
+        LPS = LPS.join('');
+        console.log(LPS);
+        $('#LPSnrzl').text(LPS);
+        //RZ()
     }
     else if (encoding_technique == "Mench") {
-
+        $('#MENCH').removeClass("mench");
+        $('#MENCH').addClass("MENCH");
+        let LPS = [];
+        LPS = longest_palindromic_substring(Arr);
+        LPS = LPS.join('');
+        console.log(LPS);
+        $('#LPSmech').text(LPS);
+        //Mench()
     }
     else if (encoding_technique == "Diff-Mench") {
-
+        $('#DIFFMENCH').removeClass("diffmench");
+        $('#DIFFMENCH').addClass("DIFFMENCH");
+        let LPS = [];
+        LPS = longest_palindromic_substring(Arr);
+        LPS = LPS.join('');
+        console.log(LPS);
+        $('#LPSdiffmech').text(LPS);
+        //Diff Mench()
     }
     else if (encoding_technique == "AMI") {
-
+        $('#AMI').removeClass("ami");
+        $('#RZ').addClass("AMI");
+        let LPS = [];
+        LPS = longest_palindromic_substring(Arr);
+        LPS = LPS.join('');
+        console.log(LPS);
+        $('#LPSami').text(LPS);
+        //AMI()
     }
     else if (encoding_technique == "B8ZS") {
-
+        $('#B8ZS').removeClass("b8zs");
+        $('#B8ZS').addClass("b8zs");
+        let LPS = [];
+        LPS = longest_palindromic_substring(Arr);
+        LPS = LPS.join('');
+        console.log(LPS);
+        $('#LPSdiffmech').text(LPS);
+        //B8ZS()
     }
     else if (encoding_technique == "HDB3") {
-
+        $('#HDB3').removeClass("hdb3");
+        $('#HDB3').addClass("HDB3");
+        let LPS = [];
+        LPS = longest_palindromic_substring(input_string_arr);
+        LPS = LPS.join('');
+        console.log(LPS);
+        $('#LPSHDB3').text(LPS);
+        //Diff Mench()
     }
 })
 
