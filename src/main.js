@@ -22,20 +22,6 @@ function fixedSubSequence(nums) {
     return arr;
 }
 
-<<<<<<< HEAD
-
-function randomBinaryArrayGen(){
-    let arr = [];
-    for(let i=1;i<=15;i++){
-      arr.push(Math.floor((Math.random() * 1.99)));
-    }
-    return arr;
-  }
-  function consZeroPosGen() {
-    start = (Math.floor(Math.random() * 5.99));
-    return start;
-  }
-
 
   function nrzIencoder(arr){
     let nrzI = [];
@@ -44,23 +30,37 @@ function randomBinaryArrayGen(){
     }else{
       nrzI[0] = -1;
     }
-    let currState = nrzI[0];
+    let currBit = nrzI[0];
     for(let i=1;i<=arr.length;i++){
       if(arr[i]==0){
         nrzI[i] = currState;
       }else{
-        if(currState==-1){
-          currState = 1;
+        if(currBit==-1){
+          currBit = 1;
         }else{
-          currState = -1;
+          currBit = -1;
         }
-        nrzI[i] = currState;
+        nrzI[i] = currBit;
       }
     }
     return nrzI; 
   }
+
+
+  function nrzLencoder(arr){
+    let nrzL = [];
+    for(let i=0;i<=arr.length;i++){
+      if(arr[i]==0){
+        nrzL[i] = -1
+      }else{
+        nrzL[i] = 1;
+      }
+    }
+    return nrzL; 
+  }
+
+
 //on click event Generate button
-=======
 function updated_string(s) {
     let s2 = [];
     s2.push('#');
@@ -131,7 +131,6 @@ function longest_palindromic_substring(s) {
 }
 
 //on click event for Generate button
->>>>>>> 421c7e5185f9c22fd7ae618ece9769a61d396b26
 $("#init").click(function (event) {
 
     encoding_technique = $("#list-encoding").val();
@@ -198,6 +197,15 @@ $("#digitaldata").click(function (event) {
         $('#LPSuni').text(LPS);
         //uniNrz()                    
     }
+
+
+
+
+
+
+
+
+
     else if (encoding_technique == "NRZ-L") {
         $('#NRZL').removeClass("nrzl");
         $('#NRZL').addClass("NRZL");
@@ -208,91 +216,16 @@ $("#digitaldata").click(function (event) {
         $('#LPSnrzl').text(LPS);
         //NRZL()
 
-        function nrzLencoder(arr){
-            let nrzL = [];
-            for(let i=0;i<=arr.length;i++){
-              if(arr[i]==0){
-                nrzL[i] = -1
-              }else{
-                nrzL[i] = 1;
-              }
-            }
-            return nrzL; 
-          }
-          if(generation_type="compleately-ramdom"){
-            function nrzLRandomGen() {
-                let arr = randomBinaryArrayGen();
-                let input = document.getElementById("nrzLInputCons0");
-                let start = consZeroPosGen();
-                let cons0 = Number(input.value);
-                for (let i = start; i < cons0 + start; i++) {
-                  arr[i] = 0;
-                }
-                let encodedSignal = nrzLencoder(arr);
-                nrzLCanvasGenerator(encodedSignal,arr);
-              }
-          }else{
-            function nrzLCustomGen(){
-                let input = document.getElementById("nrzLInputDs");
-                let string = input.value;
-                if (validate(string)) {
-                  let arr = parserInt(string);
-                  let encodedSignal = nrzLencoder(arr);
-                  nrzLCanvasGenerator(encodedSignal, arr);
-                } else {
-                  alert("Please Enter a valid digital signal");
-                }
-              }
-          }
-         
-          function nrzLCanvasGenerator(encodedSignal,arr){
-
-
-
-          }
-          
-          
-         
+        
+        
+        
     }
+
+
+
+
+
     else if (encoding_technique == "NRZ-I") {
-<<<<<<< HEAD
-        if(generation_type=="completely-random"){
-            function nrzIRandomGen() {
-                let arr = randomBinaryArrayGen();
-                let input = document.getElementById("nrzIInputCons0");
-                let start = consZeroPosGen();
-                let cons0 = Number(input.value);
-                for (let i = start; i < cons0 + start; i++) {
-                  arr[i] = 0;
-                }
-                console.log(arr);
-                let encodedSignal = nrzIencoder(arr);
-                nrzICanvasGenerator(encodedSignal,arr);
-              }
-        }else{
-            function nrzICustomGen(){
-                let input = document.getElementById("nrzIInputDs");
-                let string = input.value;
-                if (validate(string)) {
-                  let arr = parserInt(string);
-                  console.log(arr);
-                  let encodedSignal = nrzIencoder(arr);
-                  nrzICanvasGenerator(encodedSignal, arr);
-                } else {
-                  alert("Please Enter a valid digital signal");
-                }
-              }
-        }
-          
-          function nrzICanvasGenerator(dataArray,labelArray) {
-            
-          }
-    }
-    else if (encoding_technique == "RZ") {
-
-
-
-=======
         $('#NRZL').removeClass("nrzi");
         $('#NRZI').addClass("NRZI");
         let LPS = [];
@@ -302,6 +235,11 @@ $("#digitaldata").click(function (event) {
         $('#LPSnrzi').text(LPS);
         //NRZI()
     }
+
+
+
+
+
     else if (encoding_technique == "RZ") {
         $('#RZ').removeClass("rz");
         $('#RZ').addClass("RZ");
@@ -311,8 +249,12 @@ $("#digitaldata").click(function (event) {
         console.log(LPS);
         $('#LPSrz').text(LPS);
         //rz()
->>>>>>> 421c7e5185f9c22fd7ae618ece9769a61d396b26
     }
+
+
+
+
+
     else if (encoding_technique == "Mench") {
         $('#MENCH').removeClass("mench");
         $('#MENCH').addClass("MENCH");
@@ -323,6 +265,11 @@ $("#digitaldata").click(function (event) {
         $('#LPSmench').text(LPS);
         //Mech()
     }
+
+
+
+
+
     else if (encoding_technique == "Diff-Mench") {
         $('#DIFFMENCH').removeClass("diffmench");
         $('#DIFFMENCH').addClass("DIFFMENCH");
@@ -333,6 +280,9 @@ $("#digitaldata").click(function (event) {
         $('#LPSdiffmench').text(LPS);
         //Diff Mench()
     }
+
+
+
     else if (encoding_technique == "AMI") {
         $('#AMI').removeClass("ami");
         $('#RZ').addClass("AMI");
@@ -343,6 +293,10 @@ $("#digitaldata").click(function (event) {
         $('#LPSami').text(LPS);
         //AMI()
     }
+
+
+
+    
     else if (encoding_technique == "B8ZS") {
         $('#B8ZS').removeClass("b8zs");
         $('#B8ZS').addClass("b8zs");
