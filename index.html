@@ -48,8 +48,8 @@
                 <h5 id="bt">Choose Your Digital Data Stream Generation Technique </h5>
                 <div class="form-group1 ">
                     <select name="" id="list-type" class="form-control">
-                        <option value="completely-random">Completely Random Sequence </option>
-                        <option value="sub-sequence"> Random Sequence with fixed Sub-Sequences</option>
+                        <option value="completely-random" id="completely-random">Completely Random Sequence </option>
+                        <option value="sub-sequence" id="sub-sequence"> Random Sequence with fixed Sub-Sequences</option>
 
                     </select>
                 </div>
@@ -59,15 +59,15 @@
                 <h5 id="bt">Choose Your Encoding Technique </h5>
                 <div class="form-group ">
                     <select name="" id="list-encoding" class="form-control">
-                        <option value="NRZ-UniNRZ">NRZ (NON - RETRUN - TO - ZERO UNIPOLAR) </option>
-                        <option value="NRZ-L">NRZ-L (NON-RETURN-TO-ZERO-LEVEL)</option>
-                        <option value="NRZ-I">NRZ-I (NON-RETURN-TO-ZERO-INVERT)</option>
-                        <option value="RZ">RZ (RETURN-TO-ZERO)</option>
-                        <option value="Mench"> MANCHESTER</option>
-                        <option value="Diff-Mench">DIFFERENTAIL MANCHESTER</option>
-                        <option value="AMI">AMI (ALTERNATE MARK INVERSION)</option>
-                        <option value="B8ZS"> B8ZS (BIPLOAR WITH 8-ZERO SUBSTITUTION)</option>
-                        <option value="HDB3"> HDB3 (HIGH-DENSITY-BIPOLAR 3-ZERO)</option>
+                        <option value="NRZ-UniNRZ" id ="NRZ">NRZ (NON - RETRUN - TO - ZERO UNIPOLAR) </option>
+                        <option value="NRZ-L" id="NRZL">NRZ-L (NON-RETURN-TO-ZERO-LEVEL)</option>
+                        <option value="NRZ-I" id="NRZI">NRZ-I (NON-RETURN-TO-ZERO-INVERT)</option>
+                        <option value="RZ" id="RZ">RZ (RETURN-TO-ZERO)</option>
+                        <option value="Mench" id="Mench"> MANCHESTER</option>
+                        <option value="Diff-Mench" id="Diff-Mench">DIFFERENTAIL MANCHESTER</option>
+                        <option value="AMI" id="AMI">AMI (ALTERNATE MARK INVERSION)</option>
+                        <option value="B8ZS" id="B8ZS"> B8ZS (BIPLOAR WITH 8-ZERO SUBSTITUTION)</option>
+                        <option value="HDB3" id="HDB3"> HDB3 (HIGH-DENSITY-BIPOLAR 3-ZERO)</option>
                     </select>
                 </div>
                 <button class="btn btn-success" id="init">Generate</button>
@@ -108,6 +108,7 @@
 
     <!-- Encoding blocks -->
 
+   
     <!-- Unipolar NRZ -->
     <div id="UNINRZ" class="uninrz">
         <p class="lps">Longest Palindromic Substring :</p>
@@ -119,7 +120,7 @@
     <div id="NRZL" class="nrzl">
         <p class="lps">Longest Palindromic Substring :</p>
         <p class="lps" id="LPSnrzl"> </p>
-        <canvas id="NRZL" width="400" height="400"></canvas>
+        <canvas id="NRZLC" width="400" height="400"></canvas>
     </div>
 
     <!-- NRZI -->
@@ -212,11 +213,13 @@
         </div>
 
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.0.min.js"
         integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
     <script src="./src/main.js" async defer></script>
+    
 </body>
 
 </html>

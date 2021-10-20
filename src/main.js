@@ -22,6 +22,115 @@ function fixedSubSequence(nums) {
     return arr;
 }
 
+
+
+
+  function nrzIencoder(arr){
+    let nrzI = [];
+    if(arr[0]==1){
+      nrzI[0] = 1;
+    }else{
+      nrzI[0] = -1;
+    }
+    let currBit = nrzI[0];
+    for(let i=1;i<=arr.length;i++){
+      if(arr[i]==0){
+        nrzI[i] = currState;
+      }else{
+        if(currBit==-1){
+          currBit = 1;
+        }else{
+          currBit = -1;
+        }
+        nrzI[i] = currBit;
+      }
+    }
+    return nrzI; 
+  }
+
+
+  function nrzLencoder(arr){
+    let nrzL = [];
+    for(let i=0;i<=arr.length;i++){
+      if(arr[i]==0){
+        nrzL[i] = -1
+      }else{
+        nrzL[i] = 1;
+      }
+    }
+    return nrzL; 
+
+  }
+
+
+  function nrzLCanvasGenerator(dataArray,labelArray){
+    var ctx = $('#NRZLC');
+
+
+
+  var myChart = new Chart(ctx, {
+    type: "line",
+    data: {
+      labels: labelArray,
+      datasets: [
+        {
+          borderColor: "rgb(77, 77, 177)",
+          data: dataArray,
+          steppedLine: true,
+          borderWidth: 2,
+          fill: false,
+        },
+      ],
+    },
+    options: {
+      elements: {
+        point: {
+          radius: 0,
+        },
+      },
+      legend: {
+        display: false,
+      },
+      responsive: true,
+      scales: {
+        yAxes: [
+          {
+            ticks: {
+              min: -2,
+              max: 2,
+              stepSize: 1,
+              fontSize: canvasWidth / 50,
+            },
+            scaleLabel: {
+              display: true,
+              align: "center",
+              labelString: "voltage",
+            },
+          },
+        ],
+        xAxes: [
+          {
+            ticks: {
+              fontSize: canvasWidth / 50,
+              labelOffset: canvasWidth / (noOfdataelements * 2),
+            },
+            gridLines: {
+              lineWidth: 1,
+            },
+            scaleLabel: {
+              display: true,
+              align: "center",
+              labelString: "signal elements",
+            },
+          },
+        ],
+      },
+    },
+  });
+
+}
+
+//on click event Generate button
 function updated_string(s) {
     let s2 = [];
     s2.push('#');
@@ -158,6 +267,15 @@ $("#digitaldata").click(function (event) {
         $('#LPSuni').text(LPS);
         //uniNrz()                    
     }
+    
+
+
+
+
+
+
+
+
     else if (encoding_technique == "NRZ-L") {
         $('#NRZL').removeClass("nrzl");
         $('#NRZL').addClass("NRZL");
@@ -167,8 +285,24 @@ $("#digitaldata").click(function (event) {
         console.log(LPS);
         $('#LPSnrzl').text(LPS);
         //NRZL()
+        let arr=[];
+        
+        arr=nrzLencoder(input_string_arr);
+        nrzLCanvasGenerator(arr,input_string_arr);
 
+        
+        
+
+
+
+        
+        
     }
+
+
+
+
+
     else if (encoding_technique == "NRZ-I") {
         $('#NRZL').removeClass("nrzi");
         $('#NRZI').addClass("NRZI");
@@ -179,6 +313,11 @@ $("#digitaldata").click(function (event) {
         $('#LPSnrzi').text(LPS);
         //NRZI()
     }
+
+
+
+
+
     else if (encoding_technique == "RZ") {
         $('#RZ').removeClass("rz");
         $('#RZ').addClass("RZ");
@@ -189,6 +328,11 @@ $("#digitaldata").click(function (event) {
         $('#LPSrz').text(LPS);
         //rz()
     }
+
+
+
+
+
     else if (encoding_technique == "Mench") {
         $('#MENCH').removeClass("mench");
         $('#MENCH').addClass("MENCH");
@@ -199,6 +343,11 @@ $("#digitaldata").click(function (event) {
         $('#LPSmench').text(LPS);
         //Mech()
     }
+
+
+
+
+
     else if (encoding_technique == "Diff-Mench") {
         $('#DIFFMENCH').removeClass("diffmench");
         $('#DIFFMENCH').addClass("DIFFMENCH");
@@ -209,6 +358,9 @@ $("#digitaldata").click(function (event) {
         $('#LPSdiffmench').text(LPS);
         //Diff Mench()
     }
+
+
+
     else if (encoding_technique == "AMI") {
         $('#AMI').removeClass("ami");
         $('#RZ').addClass("AMI");
@@ -219,6 +371,10 @@ $("#digitaldata").click(function (event) {
         $('#LPSami').text(LPS);
         //AMI()
     }
+
+
+
+
     else if (encoding_technique == "B8ZS") {
         $('#B8ZS').removeClass("b8zs");
         $('#B8ZS').addClass("b8zs");
