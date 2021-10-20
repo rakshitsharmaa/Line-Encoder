@@ -71,6 +71,7 @@ function nrzLencoder(arr) {
 }
 
 
+
 function nrzLCanvas(dataArray, labelArray) {
   var ctx = $('#NRZLC');
   const data = {
