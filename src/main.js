@@ -23,6 +23,8 @@ function fixedSubSequence(nums) {
 }
 
 
+
+
   function nrzIencoder(arr){
     let nrzI = [];
     if(arr[0]==1){
@@ -57,8 +59,76 @@ function fixedSubSequence(nums) {
       }
     }
     return nrzL; 
+
   }
 
+
+  function nrzLCanvasGenerator(dataArray,labelArray){
+    var ctx = $('#NRZLC');
+
+
+
+  var myChart = new Chart(ctx, {
+    type: "line",
+    data: {
+      labels: labelArray,
+      datasets: [
+        {
+          borderColor: "rgb(77, 77, 177)",
+          data: dataArray,
+          steppedLine: true,
+          borderWidth: 2,
+          fill: false,
+        },
+      ],
+    },
+    options: {
+      elements: {
+        point: {
+          radius: 0,
+        },
+      },
+      legend: {
+        display: false,
+      },
+      responsive: true,
+      scales: {
+        yAxes: [
+          {
+            ticks: {
+              min: -2,
+              max: 2,
+              stepSize: 1,
+              fontSize: canvasWidth / 50,
+            },
+            scaleLabel: {
+              display: true,
+              align: "center",
+              labelString: "voltage",
+            },
+          },
+        ],
+        xAxes: [
+          {
+            ticks: {
+              fontSize: canvasWidth / 50,
+              labelOffset: canvasWidth / (noOfdataelements * 2),
+            },
+            gridLines: {
+              lineWidth: 1,
+            },
+            scaleLabel: {
+              display: true,
+              align: "center",
+              labelString: "signal elements",
+            },
+          },
+        ],
+      },
+    },
+  });
+
+}
 
 //on click event Generate button
 function updated_string(s) {
@@ -197,7 +267,7 @@ $("#digitaldata").click(function (event) {
         $('#LPSuni').text(LPS);
         //uniNrz()                    
     }
-
+    
 
 
 
@@ -215,8 +285,16 @@ $("#digitaldata").click(function (event) {
         console.log(LPS);
         $('#LPSnrzl').text(LPS);
         //NRZL()
+        let arr=[];
+        
+        arr=nrzLencoder(input_string_arr);
+        nrzLCanvasGenerator(arr,input_string_arr);
 
         
+        
+
+
+
         
         
     }
@@ -296,7 +374,7 @@ $("#digitaldata").click(function (event) {
 
 
 
-    
+
     else if (encoding_technique == "B8ZS") {
         $('#B8ZS').removeClass("b8zs");
         $('#B8ZS').addClass("b8zs");
