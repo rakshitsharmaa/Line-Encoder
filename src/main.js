@@ -34,64 +34,141 @@ function updated_string(s) {
   return s2;
 }
 
-function nrzIencoder(arr) {
-  let nrzI = [];
+
+function nrziencoder(arr) {
+  let encode = [];
   if (arr[0] == 1) {
-    nrzI[0] = 1;
-  } else {
-    nrzI[0] = -1;
+    encode[0] = 1;
   }
-  let currBit = nrzI[0];
+  else {
+    encode[0] = -1;
+  }
+  let currBit = encode[0];
   for (let i = 1; i <= arr.length; i++) {
     if (arr[i] == 0) {
-      nrzI[i] = currState;
-    } else {
+      encode[i] = currBit
+    }
+    else {
       if (currBit == -1) {
         currBit = 1;
-      } else {
+      }
+      else {
         currBit = -1;
       }
-      nrzI[i] = currBit;
+      encode[i] = currBit;
     }
   }
-  return nrzI;
+  return encode;
 }
 
 
-function nrzLencoder(arr) {
-  let nrzL = [];
+function nrzlencoder(arr) {
+  let encode = [];
   for (let i = 0; i <= arr.length; i++) {
     if (arr[i] == 0) {
-      nrzL[i] = -1
-    } else {
-      nrzL[i] = 1;
+      encode[i] = -1
+    }
+    else {
+      encode[i] = 1;
     }
   }
-  return nrzL;
+  return encode;
+}
+
+function rzencoder(arr) {
+  let encode = [];
+  let index = 0;
+  for (let i = 0; i <= arr.length; i++) {
+    if (arr[i] == 0) {
+      encode[index++] = -1;
+      encode[index++] = 0;
+    }
+    else {
+      encode[index++] = 1;
+      encode[index++] = 0;
+    }
+  }
+  return encode;
 }
 
 
 
-function nrzLCanvas(dataArray, labelArray) {
+function nrzlcanvas(dataArray, labelArray) {
   var ctx = $('#NRZLC');
   const data = {
     labels: labelArray,
     datasets: [{
       label: 'NRZL encoding',
       data: dataArray,
-      fill: false,
+      borderWidth: 2,
+
       borderColor: 'rgb(75, 192, 192)',
-      tension: 0.1
+      lineTension: 0
     }]
   };
-
+  const options = {
+    elements: {
+      point: {
+        radius: 0,
+      },
+    },
+    legend: {
+      display: false,
+    },
+    scales: {
+      yAxes: [
+        {
+          ticks: {
+            min: -2,
+            max: 2,
+            stepSize: 1,
+          },
+          scaleLabel: {
+            display: true,
+            align: "center",
+            labelString: "Voltage",
+          },
+        },
+      ],
+      xAxes: [
+        {
+          gridLines: {
+            lineWidth: 1,
+          },
+          scaleLabel: {
+            display: true,
+            align: "center",
+            labelString: "signal elements",
+          },
+          ticks: {
+            color: 'blue',
+          }
+        }
+      ]
+    }
+  };
   var myChart = new Chart(ctx, {
     type: "line",
     data: data,
   });
 }
 
-function nrzICanvas(dataArray, labelArray) {
+function manchestercncoder(arr) {
+  let encode = [];
+  let index = 0;
+  for (let i = 0; i <= arr.length; i++) {
+    if (arr[i] == 0) {
+      encode[index++] = -1;
+      encode[index++] = 1;
+    }
+    else {
+      encode[index++] = 1;
+      encode[index++] = -1;
+    }
+  }
+  return encode;
+}
+function manchestercanvas(dataArray, labelArray) {
   var ctx = $('#NRZIC');
   const data = {
     labels: labelArray,
@@ -110,22 +187,47 @@ function nrzICanvas(dataArray, labelArray) {
   });
 }
 
-function rzEncoder(arr) {
-  let rz = [];
-  let index = 0;
-  for (let i = 0; i <= arr.length; i++) {
-    if (arr[i] == 0) {
-      rz[index++] = -1;
-      rz[index++] = 0;
-    } else {
-      rz[index++] = 1;
-      rz[index++] = 0;
-    }
-  }
-  return rz;
+
+
+function uninrzcanvas(dataArray) {
+  var ctx = $('#UniNRZC');
+  const data = {
+    labels: dataArray,
+    datasets: [{
+      label: 'NRZL encoding',
+      data: dataArray,
+      borderWidth: 2,
+
+      borderColor: 'rgb(75, 192, 192)',
+      lineTension: 0
+    }]
+  };
+  var myChart = new Chart(ctx, {
+    type: "line",
+    data: data,
+  });
+}
+function nrzicanvas(dataArray, labelArray) {
+  var ctx = $('#NRZIC');
+  const data = {
+    labels: labelArray,
+    datasets: [{
+      label: 'NRZI encoding',
+      data: dataArray,
+      fill: false,
+      borderColor: 'rgb(75, 192, 192)',
+      tension: 0.1
+    }]
+  };
+
+  var myChart = new Chart(ctx, {
+    type: "line",
+    data: data,
+  });
 }
 
-function rzCanvas(dataArray, labelArray) {
+
+function rzcanvas(dataArray, labelArray) {
   var ctx = $('#RZC');
   const data = {
     labels: labelArray,
@@ -266,8 +368,11 @@ $("#digitaldata").click(function (event) {
     LPS = LPS.join('');
     console.log(LPS);
     $('#LPSuni').text(LPS);
-    //uniNrz()                    
+    //uniNrz()          
+    //no encoding directly passing to cnavas generator function  
+    uninrzcanvas(input_string_arr);
   }
+
   else if (encoding_technique == "NRZ-L") {
     $('#NRZL').removeClass("nrzl");
     $('#NRZL').addClass("NRZL");
