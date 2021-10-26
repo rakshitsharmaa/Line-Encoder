@@ -263,20 +263,73 @@ function diffmanchestercanvas(dataArray, labelArray) {
 
 function uninrzcanvas(dataArray) {
   var ctx = $('#UniNRZC');
+
   const data = {
     labels: dataArray,
     datasets: [{
-      label: 'NRZL encoding',
-      data: dataArray,
-      borderWidth: 2,
 
-      borderColor: 'rgb(75, 192, 192)',
-      lineTension: 0
+      label: 'UNINRZ Encoding',
+      data: dataArray,
+      fill: false,
+      stepped: true,
+      borderWidth: 2,
+      borderColor: 'rgb(182, 145, 78)',
+      backgroundColor: 'rgba(255, 99, 132, 0.2)',
+      cubicInterpolationMode: 'monotone'
     }]
+
   };
+  const options = {
+    aspectRatio: 4,
+    responsive: true,
+    interaction: {
+      intersect: false,
+      axis: 'x'
+    },
+    scales: {
+      yAxes: {
+        ticks: {
+          max: 2,
+          maxTicksLimit: 12,
+          stepSize: 1,
+          fontSize: 30
+        },
+        gridLines: {
+          zeroLineColor: '#ffcc33',
+          display: false,
+          color: "#FFFFFF"
+        },
+        scaleLabel: {
+          display: true,
+          align: "center",
+          labelString: "voltage",
+        },
+      },
+      xAxes: {
+        scaleLabel: {
+          display: true,
+          align: "center",
+          labelString: "signal elements",
+        },
+        gridLines: {
+          zeroLineColor: '#ffcc33',
+          display: false,
+          color: "#FFFFFF"
+        },
+      },
+    },
+
+    plugins: {
+      title: {
+        display: true,
+
+      }
+    }
+  }
   var myChart = new Chart(ctx, {
     type: "line",
     data: data,
+    options: options
   });
 }
 function nrzicanvas(dataArray, labelArray) {
@@ -384,6 +437,7 @@ $("#digitaldata").click(function (event) {
     LPS = LPS.join('');
     console.log(LPS);
     $('#LPSuni').text(LPS);
+    input_string_arr.push(input_string_arr[input_string_arr.length - 1]);
     //uniNrz()          
     //no encoding directly passing to cnavas generator function  
     uninrzcanvas(input_string_arr);
