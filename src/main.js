@@ -119,7 +119,7 @@ function nrziencoder(arr) {
 }
 
 
-function nrzlencoder(arr) {
+function nrzLencoder(arr) {
   let encode = [];
   for (let i = 0; i <= arr.length; i++) {
     if (arr[i] == 0) {
@@ -149,64 +149,67 @@ function rzencoder(arr) {
 }
 
 
-
-function nrzlcanvas(dataArray, labelArray) {
+//NRZL Canvas
+function nrzLcanvas(dataArray, labelArray) {
   var ctx = $('#NRZLC');
   const data = {
     labels: labelArray,
     datasets: [{
-      label: 'NRZL encoding',
+      label: 'NRZL Encoding',
       data: dataArray,
+      fill: false,
+      stepped: true,
       borderWidth: 2,
-
-      borderColor: 'rgb(75, 192, 192)',
-      lineTension: 0
+      borderColor: 'rgb(182, 145, 78)',
+      backgroundColor: 'cyan',
+      cubicInterpolationMode: 'monotone'
     }]
   };
   const options = {
-    elements: {
-      point: {
-        radius: 0,
-      },
-    },
-    legend: {
-      display: false,
+    aspectRatio: 4,
+    responsive: true,
+    interaction: {
+      intersect: false,
+      axis: 'x'
     },
     scales: {
-      yAxes: [
-        {
-          ticks: {
-            min: -2,
-            max: 2,
-            stepSize: 1,
-          },
-          scaleLabel: {
-            display: true,
-            align: "center",
-            labelString: "Voltage",
-          },
+      yAxes: {
+        ticks: {
+          max: 2,
+          maxTicksLimit: 12,
+          stepSize: 1,
+          fontSize: 90,
+          fontWeight: 600
         },
-      ],
-      xAxes: [
-        {
-          gridLines: {
-            lineWidth: 1,
-          },
-          scaleLabel: {
-            display: true,
-            align: "center",
-            labelString: "signal elements",
-          },
-          ticks: {
-            color: 'blue',
-          }
-        }
-      ]
+        gridLines: {
+          zeroLineColor: '#ffcc33',
+          display: false,
+          color: "#FFFFFF"
+        },
+
+      },
+      xAxes: {
+
+        gridLines: {
+          zeroLineColor: '#ffcc33',
+          display: false,
+          color: "#FFFFFF"
+        },
+        fontSize: 90
+      },
+    },
+
+    plugins: {
+      title: {
+        display: true,
+
+      }
     }
-  };
+  }
   var myChart = new Chart(ctx, {
     type: "line",
     data: data,
+    options: options
   });
 }
 
@@ -260,7 +263,7 @@ function diffmanchestercanvas(dataArray, labelArray) {
 }
 
 
-
+//UNINRZ Canvas
 function uninrzcanvas(dataArray) {
   var ctx = $('#UniNRZC');
 
@@ -274,7 +277,7 @@ function uninrzcanvas(dataArray) {
       stepped: true,
       borderWidth: 2,
       borderColor: 'rgb(182, 145, 78)',
-      backgroundColor: 'rgba(255, 99, 132, 0.2)',
+      backgroundColor: 'cyan',
       cubicInterpolationMode: 'monotone'
     }]
 
@@ -292,30 +295,24 @@ function uninrzcanvas(dataArray) {
           max: 2,
           maxTicksLimit: 12,
           stepSize: 1,
-          fontSize: 30
+          fontSize: 90,
+          fontWeight: 600
         },
         gridLines: {
           zeroLineColor: '#ffcc33',
           display: false,
           color: "#FFFFFF"
         },
-        scaleLabel: {
-          display: true,
-          align: "center",
-          labelString: "voltage",
-        },
+
       },
       xAxes: {
-        scaleLabel: {
-          display: true,
-          align: "center",
-          labelString: "signal elements",
-        },
+
         gridLines: {
           zeroLineColor: '#ffcc33',
           display: false,
           color: "#FFFFFF"
         },
+        fontSize: 90
       },
     },
 
@@ -427,7 +424,7 @@ $("#digitaldata").click(function (event) {
   $('#data-container2').remove();
   var input = $('#digital-data').val();
   input_string_arr = input.split("");
-  //These function will do encoding & print    longest palindromic subsequence(lps)  & signal show  
+
   if (encoding_technique == "NRZ-UniNRZ") {
     $('#UNINRZ').removeClass("uninrz");
     $('#UNINRZ').addClass("NRZ-UniNRZ");
@@ -437,6 +434,7 @@ $("#digitaldata").click(function (event) {
     LPS = LPS.join('');
     console.log(LPS);
     $('#LPSuni').text(LPS);
+    //for Last bit siganal push last bit again
     input_string_arr.push(input_string_arr[input_string_arr.length - 1]);
     //uniNrz()          
     //no encoding directly passing to cnavas generator function  
@@ -452,9 +450,10 @@ $("#digitaldata").click(function (event) {
     console.log(LPS);
     $('#LPSnrzl').text(LPS);
     //NRZL()
-    let arr = []
+    input_string_arr.push(input_string_arr[input_string_arr.length - 1]);
+    let arr = [];
     arr = nrzLencoder(input_string_arr);
-    nrzLCanvas(arr, input_string_arr);
+    nrzLcanvas(arr, input_string_arr);
 
   }
   else if (encoding_technique == "NRZ-I") {
