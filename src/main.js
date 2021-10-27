@@ -91,8 +91,21 @@ function longest_palindromic_substring(s) {
     lps.push(s[i]);
   return lps;
 }
-
-function nrziencoder(arr) {
+//NRZL Encoder
+function nrzLencoder(arr) {
+  let encode = [];
+  for (let i = 0; i <= arr.length; i++) {
+    if (arr[i] == 0) {
+      encode[i] = -1
+    }
+    else {
+      encode[i] = 1;
+    }
+  }
+  return encode;
+}
+//NRZI Encoder
+function nrzIencoder(arr) {
   let encode = [];
   if (arr[0] == 1) {
     encode[0] = 1;
@@ -102,6 +115,7 @@ function nrziencoder(arr) {
   }
   let currBit = encode[0];
   for (let i = 1; i <= arr.length; i++) {
+    //No Transition at 0
     if (arr[i] == 0) {
       encode[i] = currBit
     }
@@ -117,21 +131,7 @@ function nrziencoder(arr) {
   }
   return encode;
 }
-
-
-function nrzLencoder(arr) {
-  let encode = [];
-  for (let i = 0; i <= arr.length; i++) {
-    if (arr[i] == 0) {
-      encode[i] = -1
-    }
-    else {
-      encode[i] = 1;
-    }
-  }
-  return encode;
-}
-
+// RZ Encoder
 function rzencoder(arr) {
   let encode = [];
   let index = 0;
@@ -147,72 +147,7 @@ function rzencoder(arr) {
   }
   return encode;
 }
-
-
-//NRZL Canvas
-function nrzLcanvas(dataArray, labelArray) {
-  var ctx = $('#NRZLC');
-  const data = {
-    labels: labelArray,
-    datasets: [{
-      label: 'NRZL Encoding',
-      data: dataArray,
-      fill: false,
-      stepped: true,
-      borderWidth: 2,
-      borderColor: 'rgb(182, 145, 78)',
-      backgroundColor: 'cyan',
-      cubicInterpolationMode: 'monotone'
-    }]
-  };
-  const options = {
-    aspectRatio: 4,
-    responsive: true,
-    interaction: {
-      intersect: false,
-      axis: 'x'
-    },
-    scales: {
-      yAxes: {
-        ticks: {
-          max: 2,
-          maxTicksLimit: 12,
-          stepSize: 1,
-          fontSize: 90,
-          fontWeight: 600
-        },
-        gridLines: {
-          zeroLineColor: '#ffcc33',
-          display: false,
-          color: "#FFFFFF"
-        },
-
-      },
-      xAxes: {
-
-        gridLines: {
-          zeroLineColor: '#ffcc33',
-          display: false,
-          color: "#FFFFFF"
-        },
-        fontSize: 90
-      },
-    },
-
-    plugins: {
-      title: {
-        display: true,
-
-      }
-    }
-  }
-  var myChart = new Chart(ctx, {
-    type: "line",
-    data: data,
-    options: options
-  });
-}
-
+//Manchester Encoder
 function manchestercncoder(arr) {
   let encode = [];
   let index = 0;
@@ -228,6 +163,7 @@ function manchestercncoder(arr) {
   }
   return encode;
 }
+//Diff Manchester Encoder
 function diffmanchestercncoder(arr) {
   let encode = [];
   let index = 0;
@@ -243,25 +179,6 @@ function diffmanchestercncoder(arr) {
   }
   return encode;
 }
-function diffmanchestercanvas(dataArray, labelArray) {
-  var ctx = $('#NRZIC');
-  const data = {
-    labels: labelArray,
-    datasets: [{
-      label: 'NRZI encoding',
-      data: dataArray,
-      fill: false,
-      borderColor: 'rgb(75, 192, 192)',
-      tension: 0
-    }]
-  };
-
-  var myChart = new Chart(ctx, {
-    type: "line",
-    data: data,
-  });
-}
-
 
 //UNINRZ Canvas
 function uninrzcanvas(dataArray) {
@@ -329,26 +246,133 @@ function uninrzcanvas(dataArray) {
     options: options
   });
 }
-function nrzicanvas(dataArray, labelArray) {
+
+//NRZL Canvas
+function nrzLcanvas(dataArray, labelArray) {
+  var ctx = $('#NRZLC');
+  const data = {
+    labels: labelArray,
+    datasets: [{
+      label: 'NRZL Encoding',
+      data: dataArray,
+      fill: false,
+      stepped: true,
+      borderWidth: 2,
+      borderColor: 'rgb(182, 145, 78)',
+      backgroundColor: 'cyan',
+      cubicInterpolationMode: 'monotone'
+    }]
+  };
+  const options = {
+    aspectRatio: 4,
+    responsive: true,
+    interaction: {
+      intersect: false,
+      axis: 'x'
+    },
+    scales: {
+      yAxes: {
+        ticks: {
+          max: 2,
+          maxTicksLimit: 12,
+          stepSize: 1,
+          fontSize: 90,
+          fontWeight: 600
+        },
+        gridLines: {
+          zeroLineColor: '#ffcc33',
+          display: false,
+          color: "#FFFFFF"
+        },
+
+      },
+      xAxes: {
+
+        gridLines: {
+          zeroLineColor: '#ffcc33',
+          display: false,
+          color: "#FFFFFF"
+        },
+        fontSize: 90
+      },
+    },
+
+    plugins: {
+      title: {
+        display: true,
+
+      }
+    }
+  }
+  var myChart = new Chart(ctx, {
+    type: "line",
+    data: data,
+    options: options
+  });
+}
+//NRZI Canvas
+function nrzIcanvas(dataArray, labelArray) {
   var ctx = $('#NRZIC');
   const data = {
     labels: labelArray,
     datasets: [{
-      label: 'NRZI encoding',
+      label: 'NRZI Encoding',
       data: dataArray,
       fill: false,
-      borderColor: 'rgb(75, 192, 192)',
-      tension: 0.1
+      stepped: true,
+      borderWidth: 2,
+      borderColor: 'rgb(182, 145, 78)',
+      backgroundColor: 'cyan',
+      cubicInterpolationMode: 'monotone'
     }]
   };
+  const options = {
+    aspectRatio: 4,
+    responsive: true,
+    interaction: {
+      intersect: false,
+      axis: 'x'
+    },
+    scales: {
+      yAxes: {
+        ticks: {
+          max: 2,
+          maxTicksLimit: 12,
+          stepSize: 1,
+          fontSize: 90,
+          fontWeight: 600
+        },
+        gridLines: {
+          zeroLineColor: '#ffcc33',
+          display: false,
+          color: "#FFFFFF"
+        },
 
+      },
+      xAxes: {
+
+        gridLines: {
+          zeroLineColor: '#ffcc33',
+          display: false,
+          color: "#FFFFFF"
+        },
+        fontSize: 90
+      },
+    },
+
+    plugins: {
+      title: {
+        display: true,
+      }
+    }
+  }
   var myChart = new Chart(ctx, {
     type: "line",
     data: data,
+    options: options
   });
 }
-
-
+// RZ Canvas
 function rzcanvas(dataArray, labelArray) {
   var ctx = $('#RZC');
   const data = {
@@ -367,9 +391,27 @@ function rzcanvas(dataArray, labelArray) {
     data: data,
   });
 }
+//Diff Manchester Canvas
+function diffmanchestercanvas(dataArray, labelArray) {
+  var ctx = $('#NRZIC');
+  const data = {
+    labels: labelArray,
+    datasets: [{
+      label: 'NRZI encoding',
+      data: dataArray,
+      fill: false,
+      borderColor: 'rgb(75, 192, 192)',
+      tension: 0
+    }]
+  };
 
+  var myChart = new Chart(ctx, {
+    type: "line",
+    data: data,
+  });
+}
 
-//on click event for Generate button
+//on click event for Submit button
 $("#init").click(function (event) {
 
   encoding_technique = $("#list-encoding").val();
@@ -416,8 +458,7 @@ $("#init").click(function (event) {
   }
 });
 
-
-
+//On click handler for Generate Button
 $("#digitaldata").click(function (event) {
   //method prevent submitting of a form
   event.preventDefault();
@@ -464,8 +505,8 @@ $("#digitaldata").click(function (event) {
     LPS = LPS.join('');
     console.log(LPS);
     $('#LPSnrzi').text(LPS);
-
     //NRZI()
+    input_string_arr.push(input_string_arr[input_string_arr.length - 1]);
     let arr = [];
     arr = nrzIencoder(input_string_arr);
     nrzIcanvas(arr, input_string_arr);
