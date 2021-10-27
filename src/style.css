@@ -112,8 +112,23 @@ margin-bottom: 10vh;
         margin: 2vh 15vw;
     }
 
+    .subseq{
+        letter-spacing: 2px;
+        font-weight: 700; 
+       }
 
+       .subsequence{
+        display: none;
+       }
+       .Subsequence{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 50px;
+        margin-top: 29vh;
 
+       }
     /* Encoding blocks */
 .uninrz{
     display: none;
@@ -317,7 +332,8 @@ margin-bottom: 10vh;
        font-weight: 700;
    
    }
-
+ 
+   
 
 
 

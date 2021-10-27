@@ -1,4 +1,4 @@
-let input_string_arr = {};    //input charecter array
+let input_string_arr = {};
 let encoding_technique;
 let generation_type;
 //Sub Sequence Generation                       
@@ -91,6 +91,7 @@ function longest_palindromic_substring(s) {
     lps.push(s[i]);
   return lps;
 }
+
 //NRZL Encoder
 function nrzLencoder(arr) {
   let encode = [];
@@ -136,10 +137,12 @@ function rzencoder(arr) {
   let encode = [];
   let index = 0;
   for (let i = 0; i <= arr.length; i++) {
+    //Revert Z
     if (arr[i] == 0) {
       encode[index++] = -1;
       encode[index++] = 0;
     }
+    //Straight Z
     else {
       encode[index++] = 1;
       encode[index++] = 0;
@@ -147,36 +150,18 @@ function rzencoder(arr) {
   }
   return encode;
 }
+
 //Manchester Encoder
 function manchestercncoder(arr) {
   let encode = [];
-  let index = 0;
-  for (let i = 0; i <= arr.length; i++) {
-    if (arr[i] == 0) {
-      encode[index++] = -1;
-      encode[index++] = 1;
-    }
-    else {
-      encode[index++] = 1;
-      encode[index++] = -1;
-    }
-  }
+
   return encode;
 }
+
 //Diff Manchester Encoder
 function diffmanchestercncoder(arr) {
   let encode = [];
-  let index = 0;
-  for (let i = 0; i <= arr.length; i++) {
-    if (arr[i] == 0) {
-      encode[index++] = -1;
-      encode[index++] = 1;
-    }
-    else {
-      encode[index++] = 1;
-      encode[index++] = -1;
-    }
-  }
+
   return encode;
 }
 
@@ -310,6 +295,7 @@ function nrzLcanvas(dataArray, labelArray) {
     options: options
   });
 }
+
 //NRZI Canvas
 function nrzIcanvas(dataArray, labelArray) {
   var ctx = $('#NRZIC');
@@ -372,19 +358,91 @@ function nrzIcanvas(dataArray, labelArray) {
     options: options
   });
 }
+
+function rzUpdatedLabelArray(arr) {
+  labelArray = [];
+  let index = 0;
+  let i = 0;
+  while (index < arr.length) {
+    if (i % 2 == 0) {
+      labelArray.push(arr[index++]);
+      i++;
+    }
+    else {
+      labelArray.push('');
+      i++;
+    }
+  }
+  return labelArray;
+}
 // RZ Canvas
 function rzcanvas(dataArray, labelArray) {
   var ctx = $('#RZC');
+  labelArray = rzUpdatedLabelArray(labelArray);
   const data = {
     labels: labelArray,
     datasets: [{
-      label: 'RZ encoding',
+      label: 'RZ Encoding',
       data: dataArray,
       fill: false,
-      borderColor: 'rgb(75, 192, 192)',
-      tension: 0.1
+      stepped: true,
+      borderWidth: 2,
+      borderColor: 'rgb(182, 145, 78)',
+      backgroundColor: 'cyan',
+      cubicInterpolationMode: 'monotone'
     }]
   };
+  const options = {
+    aspectRatio: 4,
+    responsive: true,
+    interaction: {
+      intersect: false,
+      axis: 'x'
+    },
+    scales: {
+      yAxes: {
+        ticks: {
+          max: 2,
+          maxTicksLimit: 12,
+          stepSize: 1,
+          fontSize: 90,
+          fontWeight: 600
+        },
+        gridLines: {
+          zeroLineColor: '#ffcc33',
+          display: false,
+          color: "#FFFFFF"
+        },
+
+      },
+      xAxes: {
+
+        gridLines: {
+          zeroLineColor: '#ffcc33',
+          display: false,
+          color: "#FFFFFF"
+        },
+        fontSize: 90
+      },
+    },
+
+    plugins: {
+      title: {
+        display: true,
+      }
+    }
+  }
+  var myChart = new Chart(ctx, {
+    type: "line",
+    data: data,
+    options: options
+  });
+}
+
+// Manchester Canvas
+function manchestercanvas(dataArray, labelArray) {
+  var ctx = $('MENCHC');
+
 
   var myChart = new Chart(ctx, {
     type: "line",
@@ -393,17 +451,8 @@ function rzcanvas(dataArray, labelArray) {
 }
 //Diff Manchester Canvas
 function diffmanchestercanvas(dataArray, labelArray) {
-  var ctx = $('#NRZIC');
-  const data = {
-    labels: labelArray,
-    datasets: [{
-      label: 'NRZI encoding',
-      data: dataArray,
-      fill: false,
-      borderColor: 'rgb(75, 192, 192)',
-      tension: 0
-    }]
-  };
+  var ctx = $('#DIFFMENCHC');
+
 
   var myChart = new Chart(ctx, {
     type: "line",
@@ -458,7 +507,7 @@ $("#init").click(function (event) {
   }
 });
 
-//On click handler for Generate Button
+//On click handler for Generate Button In Custom Digital Data Input
 $("#digitaldata").click(function (event) {
   //method prevent submitting of a form
   event.preventDefault();
@@ -520,8 +569,10 @@ $("#digitaldata").click(function (event) {
     console.log(LPS);
     $('#LPSrz').text(LPS);
     //rz()
+    input_string_arr.push(input_string_arr[input_string_arr.length - 1]);
     let arr = [];
     arr = rzencoder(input_string_arr);
+    console.log(arr);
     rzcanvas(arr, input_string_arr);
   }
   else if (encoding_technique == "Mench") {
@@ -578,15 +629,18 @@ $("#digitaldata").click(function (event) {
   }
 });
 
-
+//On Click handler for Generate Buttion in case of Consecutive Zero Scheme
 $("#conszeros").click(function (event) {
   event.preventDefault();
   $('#data-container2').remove();
+  $('#seq').removeClass('subsequence');
+  $('#seq').addClass('Subsequence')
   var nums = $("#numzr").val();
   console.log(nums);
-  let Arr = [];   //temp array
+  let Arr = [];   //temperary array
   Arr = fixedSubSequence(nums);
   console.log(Arr);
+
   if (encoding_technique == "NRZ-UniNRZ") {
     $('#UNINRZ').removeClass("uninrz");
     $('#UNINRZ').addClass("NRZ-UniNRZ");
@@ -596,8 +650,17 @@ $("#conszeros").click(function (event) {
     LPS = LPS.join('');
     console.log(LPS);
     $('#LPSuni').text(LPS);
-    //uniNrz()      
+    let temp = [];
+    temp = Arr.join('');
+    $('#sub').text(temp);
+    //for Last bit siganal push last bit again
+    Arr.push(Arr[Arr.length - 1]);
+    //uniNrz()          
+    //no encoding directly passing to cnavas generator function  
+    uninrzcanvas(Arr);
+    //Join method  removes , & add space as a delimiter
   }
+
   else if (encoding_technique == "NRZ-L") {
     $('#NRZL').removeClass("nrzl");
     $('#NRZL').addClass("NRZL");
@@ -606,12 +669,16 @@ $("#conszeros").click(function (event) {
     LPS = LPS.join('');
     console.log(LPS);
     $('#LPSnrzl').text(LPS);
+    let temp = [];
+    temp = Arr.join('');
+    $('#sub').text(temp);
     //NRZL()
+    Arr.push(Arr[Arr.length - 1]);
     let arr = [];
-    arr = nrzLencoder(input_string_arr);
-    nrzLCanvas(arr, input_string_arr);
-
+    arr = nrzLencoder(Arr);
+    nrzLcanvas(arr, Arr);
   }
+
   else if (encoding_technique == "NRZ-I") {
     $('#NRZI').removeClass("nrzi");
     $('#NRZI').addClass("NRZI");
@@ -620,10 +687,14 @@ $("#conszeros").click(function (event) {
     LPS = LPS.join('');
     console.log(LPS);
     $('#LPSnrzi').text(LPS);
-    let arr = [];
-    arr = nrzIencoder(input_string_arr);
-    nrzICanvas(arr, input_string_arr);
+    let temp = [];
+    temp = Arr.join('');
+    $('#sub').text(temp);
     //NRZI()
+    Arr.push(Arr[Arr.length - 1]);
+    let arr = [];
+    arr = nrzIencoder(Arr);
+    nrzIcanvas(arr, Arr);
   }
   else if (encoding_technique == "RZ") {
     $('#RZ').removeClass("rz");
@@ -633,10 +704,14 @@ $("#conszeros").click(function (event) {
     LPS = LPS.join('');
     console.log(LPS);
     $('#LPSnrzl').text(LPS);
-    let arr = [];
-    arr = rzencoder(input_string_arr);
-    rzCanvas(arr, input_string_arr);
+    let temp = [];
+    temp = Arr.join('');
+    $('#sub').text(temp);
     //RZ()
+    Arr.push(Arr[Arr.length - 1]);
+    let arr = [];
+    arr = rzencoder(Arr);
+    rzcanvas(arr, Arr);
   }
   else if (encoding_technique == "Mench") {
     $('#MENCH').removeClass("mench");
@@ -688,7 +763,7 @@ $("#conszeros").click(function (event) {
     LPS = LPS.join('');
     console.log(LPS);
     $('#LPSHDB3').text(LPS);
-    //Diff Mench()
+    //HDB3
   }
 })
 

@@ -89,7 +89,7 @@
         <form>
             <div class="form-container" id="binary-data">
                 <div class="form-group">
-                    <input type="text" class="form-control" id="digital-data" placeholder="Digital Data"
+                    <input type="text" class="form-control" id="digital-data" placeholder="Custom Digital Data Input"
                         autocomplete="off">
                 </div>
                 <button class="btn btn-success" id="digitaldata">Generate</button>
@@ -97,49 +97,52 @@
 
             <div class="form-container" id="numzeros">
                 <div class="form-group">
-                    <input type="text" class="form-control" id="numzr" placeholder="No of Consecutive Zeros"
+                    <input type="text" class="form-control" id="numzr" placeholder="Minimum No of Consecutive Zeros"
                         autocomplete="off">
                 </div>
                 <button class="btn btn-success" id="conszeros">Generate</button>
             </div>
+
         </form>
-
-
+        <div class="subsequence" id="seq">
+            <p class="subseq">Generated Random Sequence </p>
+            <p id="sub" class="subseq"></p>
+        </div>
     </div>
 
     <!-- Encoding blocks -->
 
     <!-- Unipolar NRZ -->
     <div id="UNINRZ" class="uninrz">
-        <p class="lps">Longest Palindromic Substring :</p>
+        <p class="lps">Longest Palindromic Substring </p>
         <p class="lps" id="LPSuni"> </p>
         <canvas id="UniNRZC" width="400" height="400"></canvas>
     </div>
 
     <!-- NRZL -->
     <div id="NRZL" class="nrzl">
-        <p class="lps">Longest Palindromic Substring :</p>
+        <p class="lps">Longest Palindromic Substring </p>
         <p class="lps" id="LPSnrzl"> </p>
         <canvas id="NRZLC" width="400" height="400"></canvas>
     </div>
 
     <!-- NRZI -->
     <div id="NRZI" class="nrzi">
-        <p class="lps">Longest Palindromic Substring :</p>
+        <p class="lps">Longest Palindromic Substring </p>
         <p class="lps" id="LPSnrzi"> </p>
         <canvas id="NRZIC" width="400" height="400"></canvas>
     </div>
 
     <!-- RZ-->
     <div id="RZ" class="rz">
-        <p class="lps">Longest Palindromic Substring :</p>
+        <p class="lps">Longest Palindromic Substring </p>
         <p class="lps" id="LPSrz"> </p>
         <canvas id="RZC" width="400" height="400"></canvas>
     </div>
 
     <!-- MANCHESTER -->
     <div id="MENCH" class="mench">
-        <p class="lps">Longest Palindromic Substring :</p>
+        <p class="lps">Longest Palindromic Substring </p>
         <p class="lps" id="LPSmench"> </p>
         <canvas id="MENCHC" width="400" height="400"></canvas>
     </div>
@@ -147,7 +150,7 @@
     <!-- DIFFERENTAIL Mench -->
 
     <div id="DIFFMENCH" class="diffmech">
-        <p class="lps">Longest Palindromic Substring :</p>
+        <p class="lps">Longest Palindromic Substring </p>
         <p class="lps" id="LPSdiffmench"> </p>
         <canvas id="DIFFMENCHC" width="400" height="400"></canvas>
     </div>
@@ -155,7 +158,7 @@
     <!-- AMI -->
 
     <div id="AMI" class="ami">
-        <p class="lps">Longest Palindromic Substring :</p>
+        <p class="lps">Longest Palindromic Substring </p>
         <p class="lps" id="LPSami"> </p>
         <canvas id="AMIC" width="400" height="400"></canvas>
     </div>
@@ -163,7 +166,7 @@
     <!-- B8ZS -->
 
     <div id="B8ZS" class="b8zs">
-        <p class="lps">Longest Palindromic Substring :</p>
+        <p class="lps">Longest Palindromic Substring </p>
         <p class="lps" id="LPSb8zs"> </p>
         <canvas id="B8ZSC" width="400" height="400"></canvas>
     </div>
@@ -171,7 +174,7 @@
     <!-- HDB3 -->
 
     <div id="HDB3" class="hdb3">
-        <p class="lps">Longest Palindromic Substring :</p>
+        <p class="lps">Longest Palindromic Substring </p>
         <p class="lps" id="LPShdb3"> </p>
         <canvas id="HDB3C" width="400" height="400"></canvas>
     </div>
