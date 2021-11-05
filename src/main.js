@@ -170,9 +170,46 @@ function manchesterencoder(arr) {
 }
 
 //Diff Manchester Encoder
-function diffmanchestercncoder(arr) {
+function diffmanchesterencoder(arr) {
+  //  Reverse NRZ-I + RZ
   let encode = [];
-
+  let index = 0;
+  let currBit;
+  if (arr[0] == 0) {
+    encode[index++] = -1;
+    encode[index++] = 1;
+    currBit = 1;
+  }
+  else if (arr[0] == 1) {
+    encode[index++] = 1;
+    encode[index++] = -1;
+    currBit = -1;
+  }
+  for (let i = 1; i < arr.length; i++) {
+    //Transition
+    if (arr[i] == 0) {
+      if (currBit == 1) {
+        encode[index++] = -1;
+        encode[index++] = 1;
+      }
+      else if (currBit == -1) {
+        encode[index++] = 1;
+        encode[index++] = -1;
+      }
+    }
+    //NO Transition
+    else if (arr[i] == 1) {
+      if (currBit == 1) {
+        encode[index++] = 1;
+        encode[index++] = -1;
+      }
+      else if (currBit == -1) {
+        encode[index++] = -1;
+        encode[index++] = 1;
+      }
+      currBit = currBit * -1;
+    }
+  }
   return encode;
 }
 
@@ -370,7 +407,7 @@ function nrzIcanvas(dataArray, labelArray) {
   });
 }
 
-function rzUpdatedLabelArray(arr) {
+function UpdatedLabelArray(arr) {
   labelArray = [];
   let index = 0;
   let i = 0;
@@ -389,7 +426,7 @@ function rzUpdatedLabelArray(arr) {
 // RZ Canvas
 function rzcanvas(dataArray, labelArray) {
   var ctx = $('#RZC');
-  labelArray = rzUpdatedLabelArray(labelArray);
+  labelArray = UpdatedLabelArray(labelArray);
   const data = {
     labels: labelArray,
     datasets: [{
@@ -450,26 +487,11 @@ function rzcanvas(dataArray, labelArray) {
   });
 }
 
-function manchesterUpdatedLabelArray(arr) {
-  labelArray = [];
-  let index = 0;
-  let i = 0;
-  while (index < arr.length) {
-    if (i % 2 == 0) {
-      labelArray.push(arr[index++]);
-      i++;
-    }
-    else if (i % 2 == 1) {
-      labelArray.push('');
-      i++;
-    }
-  }
-  return labelArray;
-}
+
 // Manchester Canvas
 function manchestercanvas(dataArray, labelArray) {
   var ctx = $('#MENCHC');
-  labelArray = manchesterUpdatedLabelArray(labelArray);
+  labelArray = UpdatedLabelArray(labelArray);
   const data = {
     labels: labelArray,
     datasets: [{
@@ -530,14 +552,70 @@ function manchestercanvas(dataArray, labelArray) {
     options: options,
   });
 }
+
 //Diff Manchester Canvas
 function diffmanchestercanvas(dataArray, labelArray) {
   var ctx = $('#DIFFMENCHC');
+  labelArray = UpdatedLabelArray(labelArray);
+  const data = {
+    labels: labelArray,
+    datasets: [{
+      label: 'Differential MANCHESTER Encoding',
+      data: dataArray,
+      fill: false,
+      stepped: true,
+      borderWidth: 2,
+      borderColor: 'rgb(182, 145, 78)',
+      backgroundColor: 'cyan',
+      cubicInterpolationMode: 'monotone'
+    }]
+  };
+  const options = {
+    aspectRatio: 4,
+    responsive: true,
+    interaction: {
+      intersect: false,
+      axis: 'x'
+    },
+    scales: {
+      yAxes: {
+        ticks: {
+          max: 2,
+          maxTicksLimit: 12,
+          stepSize: 1,
+          fontSize: 90,
+          fontWeight: 600
+        },
+        gridLines: {
+          zeroLineColor: '#ffcc33',
+          display: false,
+          color: "#FFFFFF"
+        },
+
+      },
+      xAxes: {
+
+        gridLines: {
+          zeroLineColor: '#ffcc33',
+          display: false,
+          color: "#FFFFFF"
+        },
+        fontSize: 90
+      },
+    },
+
+    plugins: {
+      title: {
+        display: true,
+      }
+    }
+  }
 
 
   var myChart = new Chart(ctx, {
     type: "line",
     data: data,
+    options: options,
   });
 }
 
@@ -680,6 +758,11 @@ $("#digitaldata").click(function (event) {
     console.log(LPS);
     $('#LPSdiffmench').text(LPS);
     //Diff Mench()
+    input_string_arr.push(input_string_arr[input_string_arr.length - 1]);
+    let arr = [];
+    arr = diffmanchesterencoder(input_string_arr);
+    diffmanchestercanvas(arr, input_string_arr);
+
   }
   else if (encoding_technique == "AMI") {
     $('#AMI').removeClass("ami");
@@ -821,8 +904,15 @@ $("#conszeros").click(function (event) {
     LPS = longest_palindromic_substring(Arr);
     LPS = LPS.join('');
     console.log(LPS);
-    $('#LPSdiffmech').text(LPS);
-    //Diff Mench()
+    $('#LPSdiffmench').text(LPS);
+    let temp = [];
+    temp = Arr.join('');
+    $('#sub').text(temp);
+    //Diff Mench
+    Arr.push(Arr[Arr.length - 1]);
+    let arr = [];
+    arr = diffmanchesterencoder(Arr);
+    diffmanchestercanvas(arr, Arr);
   }
   else if (encoding_technique == "AMI") {
     $('#AMI').removeClass("ami");
