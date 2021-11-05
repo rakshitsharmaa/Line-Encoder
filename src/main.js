@@ -152,9 +152,20 @@ function rzencoder(arr) {
 }
 
 //Manchester Encoder
-function manchestercncoder(arr) {
+function manchesterencoder(arr) {
   let encode = [];
-
+  let index = 0;
+  for (let i = 0; i < arr.length; i++) {
+    //Straight Z
+    if (arr[i] == 1) {
+      encode[index++] = 1;
+      encode[index++] = -1;
+    } //Revert Z or S
+    else if (arr[i] == 0) {
+      encode[index++] = -1;
+      encode[index++] = 1;
+    }
+  }
   return encode;
 }
 
@@ -439,14 +450,84 @@ function rzcanvas(dataArray, labelArray) {
   });
 }
 
+function manchesterUpdatedLabelArray(arr) {
+  labelArray = [];
+  let index = 0;
+  let i = 0;
+  while (index < arr.length) {
+    if (i % 2 == 0) {
+      labelArray.push(arr[index++]);
+      i++;
+    }
+    else if (i % 2 == 1) {
+      labelArray.push('');
+      i++;
+    }
+  }
+  return labelArray;
+}
 // Manchester Canvas
 function manchestercanvas(dataArray, labelArray) {
-  var ctx = $('MENCHC');
+  var ctx = $('#MENCHC');
+  labelArray = manchesterUpdatedLabelArray(labelArray);
+  const data = {
+    labels: labelArray,
+    datasets: [{
+      label: 'MANCHESTER Encoding',
+      data: dataArray,
+      fill: false,
+      stepped: true,
+      borderWidth: 2,
+      borderColor: 'rgb(182, 145, 78)',
+      backgroundColor: 'cyan',
+      cubicInterpolationMode: 'monotone'
+    }]
+  };
+  const options = {
+    aspectRatio: 4,
+    responsive: true,
+    interaction: {
+      intersect: false,
+      axis: 'x'
+    },
+    scales: {
+      yAxes: {
+        ticks: {
+          max: 2,
+          maxTicksLimit: 12,
+          stepSize: 1,
+          fontSize: 90,
+          fontWeight: 600
+        },
+        gridLines: {
+          zeroLineColor: '#ffcc33',
+          display: false,
+          color: "#FFFFFF"
+        },
 
+      },
+      xAxes: {
+
+        gridLines: {
+          zeroLineColor: '#ffcc33',
+          display: false,
+          color: "#FFFFFF"
+        },
+        fontSize: 90
+      },
+    },
+
+    plugins: {
+      title: {
+        display: true,
+      }
+    }
+  }
 
   var myChart = new Chart(ctx, {
     type: "line",
     data: data,
+    options: options,
   });
 }
 //Diff Manchester Canvas
@@ -583,8 +664,11 @@ $("#digitaldata").click(function (event) {
     LPS = LPS.join('');
     console.log(LPS);
     $('#LPSmench').text(LPS);
+    //Menchester
+    input_string_arr.push(input_string_arr[input_string_arr.length - 1]);
     let arr = [];
-    arr = manchestercncoder(input_string_arr);
+    arr = manchesterencoder(input_string_arr);
+    console.log(arr);
     manchestercanvas(arr, input_string_arr);
   }
   else if (encoding_technique == "Diff-Mench") {
@@ -720,10 +804,15 @@ $("#conszeros").click(function (event) {
     LPS = longest_palindromic_substring(Arr);
     LPS = LPS.join('');
     console.log(LPS);
-    $('#LPSmech').text(LPS);
+    $('#LPSmench').text(LPS);
+    let temp = [];
+    temp = Arr.join('');
+    $('#sub').text(temp);
+    //MENCH
+    Arr.push(Arr[Arr.length - 1]);
     let arr = [];
-    arr = manchestercncoder(input_string_arr);
-    manchestercanvas(arr, input_string_arr);
+    arr = manchesterencoder(Arr);
+    manchestercanvas(arr, Arr);
   }
   else if (encoding_technique == "Diff-Mench") {
     $('#DIFFMENCH').removeClass("diffmench");
