@@ -213,6 +213,27 @@ function diffmanchesterencoder(arr) {
   return encode;
 }
 
+//AMI Encoder
+function amiencoder(arr) {
+  let encode = [];
+
+  return encode;
+}
+
+//B8ZS Encoder
+function b8zsencoder(arr) {
+  let encode = [];
+
+  return encode;
+}
+
+//HDB3 Encoder
+function hdb3encoder(arr) {
+  let encode = [];
+
+  return encode;
+}
+
 //UNINRZ Canvas
 function uninrzcanvas(dataArray) {
   var ctx = $('#UniNRZC');
@@ -619,6 +640,44 @@ function diffmanchestercanvas(dataArray, labelArray) {
   });
 }
 
+//AMI Canvas
+function amicanvas(dataArray, labelArray) {
+  var ctx = $('#AMIC');
+  labelArray = UpdatedLabelArray(labelArray);
+
+
+  var myChart = new Chart(ctx, {
+    type: "line",
+    data: data,
+    options: options,
+  });
+}
+
+//B8ZS Canvas
+function b8zscanvas(dataArray, labelArray) {
+  var ctx = $('#B8ZSC');
+  labelArray = UpdatedLabelArray(labelArray);
+
+
+  var myChart = new Chart(ctx, {
+    type: "line",
+    data: data,
+    options: options,
+  });
+}
+
+//HDB3 Canvas
+function hdb3canvas(dataArray, labelArray) {
+  var ctx = $('#HDB3C');
+  labelArray = UpdatedLabelArray(labelArray);
+
+
+  var myChart = new Chart(ctx, {
+    type: "line",
+    data: data,
+    options: options,
+  });
+}
 //on click event for Submit button
 $("#init").click(function (event) {
 
@@ -822,6 +881,7 @@ $("#conszeros").click(function (event) {
     $('#sub').text(temp);
     //for Last bit siganal push last bit again
     Arr.push(Arr[Arr.length - 1]);
+
     //uniNrz()          
     //no encoding directly passing to cnavas generator function  
     uninrzcanvas(Arr);
