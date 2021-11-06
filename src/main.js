@@ -1463,7 +1463,7 @@ $("#conszeros").click(function (event) {
     LPS = longest_palindromic_substring(Arr);
     LPS = LPS.join('');
     console.log(LPS);
-    $('#LPSnrzl').text(LPS);
+    $('#LPSrz').text(LPS);
     let temp = [];
     temp = Arr.join('');
     $('#sub').text(temp);
@@ -1531,7 +1531,7 @@ $("#conszeros").click(function (event) {
     LPS = longest_palindromic_substring(Arr);
     LPS = LPS.join('');
     console.log(LPS);
-    $('#LPSdiffmech').text(LPS);
+    $('#LPSb8zs').text(LPS);
     let temp = [];
     temp = Arr.join('');
     $('#sub').text(temp);
@@ -1548,7 +1548,7 @@ $("#conszeros").click(function (event) {
     LPS = longest_palindromic_substring(input_string_arr);
     LPS = LPS.join('');
     console.log(LPS);
-    $('#LPSHDB3').text(LPS);
+    $('#LPShdb3').text(LPS);
     let temp = [];
     temp = Arr.join('');
     $('#sub').text(temp);
