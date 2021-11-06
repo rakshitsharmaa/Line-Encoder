@@ -324,6 +324,7 @@ function uninrzcanvas(dataArray) {
       intersect: false,
       axis: 'x'
     },
+    responsive: true,
     scales: {
       y: {
         ticks: {

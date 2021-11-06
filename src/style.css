@@ -51,7 +51,7 @@ body{
     }
      .img-container{
          margin:0px; 
-        width: 100%; 
+        width: 100vw; 
          height:100%;
      }
    /* data input container */
@@ -133,16 +133,19 @@ body{
 .uninrz{
     display: none;
 }
+#UniNRZC {
+    height: 250px !important;
+    }
    .NRZ-UniNRZ{
+    width:90vw;
     position: absolute;
     top:55vh;
-    width:90vw;
+    left:5vw;
     background-color:rgba(32, 3, 70, 0.801);
     color: rgb(182, 145, 78);
     min-height: 370px;
     margin-top:8vh;
     margin-bottom: 25px;
-    margin-left:5vw;
    }
 
    .nrzl{
