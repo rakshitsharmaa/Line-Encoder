@@ -216,7 +216,17 @@ function diffmanchesterencoder(arr) {
 //AMI Encoder
 function amiencoder(arr) {
   let encode = [];
-
+  let currBit = -1;
+  //+A || -A  =)RZ
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] == 1) {
+      currBit = currBit * -1;
+      encode.push(currBit);
+    }
+    else if (arr[i] == 0) {
+      encode.push(arr[i]);
+    }
+  }
   return encode;
 }
 
@@ -253,6 +263,7 @@ function uninrzcanvas(dataArray) {
     }]
 
   };
+
   const options = {
     aspectRatio: 4,
     responsive: true,
@@ -261,39 +272,71 @@ function uninrzcanvas(dataArray) {
       axis: 'x'
     },
     scales: {
-      yAxes: {
+      y: {
         ticks: {
+          color: "green",
+          font: {
+            weight: 800,
+          },
           max: 2,
           maxTicksLimit: 12,
           stepSize: 1,
           fontSize: 90,
           fontWeight: 600
         },
-        gridLines: {
-          zeroLineColor: '#ffcc33',
-          display: false,
-          color: "#FFFFFF"
+        grid: {
+          color: 'rgba(99, 36, 180, 0.801)',
+          borderColor: 'cyan'
+        },
+        title: {
+          display: true,
+          text: "voltage",
+          align: "center",
+          color: "green",
+          font: {
+            weight: 700,
+          },
         },
 
       },
-      xAxes: {
-
-        gridLines: {
-          zeroLineColor: '#ffcc33',
-          display: false,
-          color: "#FFFFFF"
+      x: {
+        ticks: {
+          color: "green",
+          font: {
+            weight: 800,
+          },
         },
-        fontSize: 90
+        grid: {
+          color: 'rgba(99, 36, 180, 0.801)',
+          borderColor: 'cyan'
+        },
+        title: {
+          display: true,
+          text: "data elements",
+          align: "center",
+          color: "green",
+          font: {
+            weight: 700,
+          },
+        },
       },
     },
 
     plugins: {
+      legend: {
+        labels: {
+          color: "rgb(182, 145, 78)",
+          font: {
+            weight: 800
+          }
+        }
+      },
       title: {
         display: true,
-
       }
     }
   }
+
   var myChart = new Chart(ctx, {
     type: "line",
     data: data,
@@ -317,6 +360,7 @@ function nrzLcanvas(dataArray, labelArray) {
       cubicInterpolationMode: 'monotone'
     }]
   };
+
   const options = {
     aspectRatio: 4,
     responsive: true,
@@ -325,39 +369,71 @@ function nrzLcanvas(dataArray, labelArray) {
       axis: 'x'
     },
     scales: {
-      yAxes: {
+      y: {
         ticks: {
+          color: "green",
+          font: {
+            weight: 800,
+          },
           max: 2,
           maxTicksLimit: 12,
           stepSize: 1,
           fontSize: 90,
           fontWeight: 600
         },
-        gridLines: {
-          zeroLineColor: '#ffcc33',
-          display: false,
-          color: "#FFFFFF"
+        grid: {
+          color: 'rgba(99, 36, 180, 0.801)',
+          borderColor: 'cyan'
+        },
+        title: {
+          display: true,
+          text: "voltage",
+          align: "center",
+          color: "green",
+          font: {
+            weight: 700,
+          },
         },
 
       },
-      xAxes: {
-
-        gridLines: {
-          zeroLineColor: '#ffcc33',
-          display: false,
-          color: "#FFFFFF"
+      x: {
+        ticks: {
+          color: "green",
+          font: {
+            weight: 800,
+          },
         },
-        fontSize: 90
+        grid: {
+          color: 'rgba(99, 36, 180, 0.801)',
+          borderColor: 'cyan'
+        },
+        title: {
+          display: true,
+          text: "data elements",
+          align: "center",
+          color: "green",
+          font: {
+            weight: 700,
+          },
+        },
       },
     },
 
     plugins: {
+      legend: {
+        labels: {
+          color: "rgb(182, 145, 78)",
+          font: {
+            weight: 800
+          }
+        }
+      },
       title: {
         display: true,
-
       }
     }
   }
+
   var myChart = new Chart(ctx, {
     type: "line",
     data: data,
@@ -381,6 +457,7 @@ function nrzIcanvas(dataArray, labelArray) {
       cubicInterpolationMode: 'monotone'
     }]
   };
+
   const options = {
     aspectRatio: 4,
     responsive: true,
@@ -389,38 +466,71 @@ function nrzIcanvas(dataArray, labelArray) {
       axis: 'x'
     },
     scales: {
-      yAxes: {
+      y: {
         ticks: {
+          color: "green",
+          font: {
+            weight: 800,
+          },
           max: 2,
           maxTicksLimit: 12,
           stepSize: 1,
           fontSize: 90,
           fontWeight: 600
         },
-        gridLines: {
-          zeroLineColor: '#ffcc33',
-          display: false,
-          color: "#FFFFFF"
+        grid: {
+          color: 'rgba(99, 36, 180, 0.801)',
+          borderColor: 'cyan'
+        },
+        title: {
+          display: true,
+          text: "voltage",
+          align: "center",
+          color: "green",
+          font: {
+            weight: 700,
+          },
         },
 
       },
-      xAxes: {
-
-        gridLines: {
-          zeroLineColor: '#ffcc33',
-          display: false,
-          color: "#FFFFFF"
+      x: {
+        ticks: {
+          color: "green",
+          font: {
+            weight: 800,
+          },
         },
-        fontSize: 90
+        grid: {
+          color: 'rgba(99, 36, 180, 0.801)',
+          borderColor: 'cyan'
+        },
+        title: {
+          display: true,
+          text: "data elements",
+          align: "center",
+          color: "green",
+          font: {
+            weight: 700,
+          },
+        },
       },
     },
 
     plugins: {
+      legend: {
+        labels: {
+          color: "rgb(182, 145, 78)",
+          font: {
+            weight: 800
+          }
+        }
+      },
       title: {
         display: true,
       }
     }
   }
+
   var myChart = new Chart(ctx, {
     type: "line",
     data: data,
@@ -461,6 +571,7 @@ function rzcanvas(dataArray, labelArray) {
       cubicInterpolationMode: 'monotone'
     }]
   };
+
   const options = {
     aspectRatio: 4,
     responsive: true,
@@ -469,38 +580,71 @@ function rzcanvas(dataArray, labelArray) {
       axis: 'x'
     },
     scales: {
-      yAxes: {
+      y: {
         ticks: {
+          color: "green",
+          font: {
+            weight: 800,
+          },
           max: 2,
           maxTicksLimit: 12,
           stepSize: 1,
           fontSize: 90,
           fontWeight: 600
         },
-        gridLines: {
-          zeroLineColor: '#ffcc33',
-          display: false,
-          color: "#FFFFFF"
+        grid: {
+          color: 'rgba(99, 36, 180, 0.801)',
+          borderColor: 'cyan'
+        },
+        title: {
+          display: true,
+          text: "voltage",
+          align: "center",
+          color: "green",
+          font: {
+            weight: 700,
+          },
         },
 
       },
-      xAxes: {
-
-        gridLines: {
-          zeroLineColor: '#ffcc33',
-          display: false,
-          color: "#FFFFFF"
+      x: {
+        ticks: {
+          color: "green",
+          font: {
+            weight: 800,
+          },
         },
-        fontSize: 90
+        grid: {
+          color: 'rgba(99, 36, 180, 0.801)',
+          borderColor: 'cyan'
+        },
+        title: {
+          display: true,
+          text: "data elements",
+          align: "center",
+          color: "green",
+          font: {
+            weight: 700,
+          },
+        },
       },
     },
 
     plugins: {
+      legend: {
+        labels: {
+          color: "rgb(182, 145, 78)",
+          font: {
+            weight: 800
+          }
+        }
+      },
       title: {
         display: true,
       }
     }
   }
+
   var myChart = new Chart(ctx, {
     type: "line",
     data: data,
@@ -526,6 +670,7 @@ function manchestercanvas(dataArray, labelArray) {
       cubicInterpolationMode: 'monotone'
     }]
   };
+
   const options = {
     aspectRatio: 4,
     responsive: true,
@@ -534,38 +679,71 @@ function manchestercanvas(dataArray, labelArray) {
       axis: 'x'
     },
     scales: {
-      yAxes: {
+      y: {
         ticks: {
+          color: "green",
+          font: {
+            weight: 800,
+          },
           max: 2,
           maxTicksLimit: 12,
           stepSize: 1,
           fontSize: 90,
           fontWeight: 600
         },
-        gridLines: {
-          zeroLineColor: '#ffcc33',
-          display: false,
-          color: "#FFFFFF"
+        grid: {
+          color: 'rgba(99, 36, 180, 0.801)',
+          borderColor: 'cyan'
+        },
+        title: {
+          display: true,
+          text: "voltage",
+          align: "center",
+          color: "green",
+          font: {
+            weight: 700,
+          },
         },
 
       },
-      xAxes: {
-
-        gridLines: {
-          zeroLineColor: '#ffcc33',
-          display: false,
-          color: "#FFFFFF"
+      x: {
+        ticks: {
+          color: "green",
+          font: {
+            weight: 800,
+          },
         },
-        fontSize: 90
+        grid: {
+          color: 'rgba(99, 36, 180, 0.801)',
+          borderColor: 'cyan'
+        },
+        title: {
+          display: true,
+          text: "data elements",
+          align: "center",
+          color: "green",
+          font: {
+            weight: 700,
+          },
+        },
       },
     },
 
     plugins: {
+      legend: {
+        labels: {
+          color: "rgb(182, 145, 78)",
+          font: {
+            weight: 800
+          }
+        }
+      },
       title: {
         display: true,
       }
     }
   }
+
 
   var myChart = new Chart(ctx, {
     type: "line",
@@ -599,38 +777,71 @@ function diffmanchestercanvas(dataArray, labelArray) {
       axis: 'x'
     },
     scales: {
-      yAxes: {
+      y: {
         ticks: {
+          color: "green",
+          font: {
+            weight: 800,
+          },
           max: 2,
           maxTicksLimit: 12,
           stepSize: 1,
           fontSize: 90,
           fontWeight: 600
         },
-        gridLines: {
-          zeroLineColor: '#ffcc33',
-          display: false,
-          color: "#FFFFFF"
+        grid: {
+          color: 'rgba(99, 36, 180, 0.801)',
+          borderColor: 'cyan'
+        },
+        title: {
+          display: true,
+          text: "voltage",
+          align: "center",
+          color: "green",
+          font: {
+            weight: 700,
+          },
         },
 
       },
-      xAxes: {
-
-        gridLines: {
-          zeroLineColor: '#ffcc33',
-          display: false,
-          color: "#FFFFFF"
+      x: {
+        ticks: {
+          color: "green",
+          font: {
+            weight: 800,
+          },
         },
-        fontSize: 90
+        grid: {
+          color: 'rgba(99, 36, 180, 0.801)',
+          borderColor: 'cyan'
+        },
+        title: {
+          display: true,
+          text: "data elements",
+          align: "center",
+          color: "green",
+          font: {
+            weight: 700,
+          },
+        },
       },
     },
 
     plugins: {
+      legend: {
+        labels: {
+          color: "rgb(182, 145, 78)",
+          font: {
+            weight: 800
+          }
+        }
+      },
       title: {
         display: true,
       }
     }
   }
+
 
 
   var myChart = new Chart(ctx, {
@@ -643,7 +854,92 @@ function diffmanchestercanvas(dataArray, labelArray) {
 //AMI Canvas
 function amicanvas(dataArray, labelArray) {
   var ctx = $('#AMIC');
-  labelArray = UpdatedLabelArray(labelArray);
+
+  const data = {
+    labels: labelArray,
+    datasets: [{
+      label: 'AMI Encoding',
+      data: dataArray,
+      fill: false,
+      stepped: true,
+      borderWidth: 2,
+      borderColor: 'rgb(182, 145, 78)',
+      backgroundColor: 'cyan',
+      cubicInterpolationMode: 'monotone'
+    }]
+  };
+  const options = {
+    aspectRatio: 4,
+    responsive: true,
+    interaction: {
+      intersect: false,
+      axis: 'x'
+    },
+    scales: {
+      y: {
+        ticks: {
+          color: "green",
+          font: {
+            weight: 800,
+          },
+          max: 2,
+          maxTicksLimit: 12,
+          stepSize: 1,
+          fontSize: 90,
+          fontWeight: 600
+        },
+        grid: {
+          color: 'rgba(99, 36, 180, 0.801)',
+          borderColor: 'cyan'
+        },
+        title: {
+          display: true,
+          text: "voltage",
+          align: "center",
+          color: "green",
+          font: {
+            weight: 700,
+          },
+        },
+
+      },
+      x: {
+        ticks: {
+          color: "green",
+          font: {
+            weight: 800,
+          },
+        },
+        grid: {
+          color: 'rgba(99, 36, 180, 0.801)',
+          borderColor: 'cyan'
+        },
+        title: {
+          display: true,
+          text: "data elements",
+          align: "center",
+          color: "green",
+          font: {
+            weight: 700,
+          },
+        },
+      },
+    },
+
+    plugins: {
+      legend: {
+        labels: {
+          color: "rgb(182, 145, 78)",
+          font: {
+            weight: 800
+          }
+        }
+      },
+      title: {
+        display: true,
+      }
+    }
+  }
 
 
   var myChart = new Chart(ctx, {
@@ -678,6 +974,7 @@ function hdb3canvas(dataArray, labelArray) {
     options: options,
   });
 }
+
 //on click event for Submit button
 $("#init").click(function (event) {
 
@@ -816,7 +1113,7 @@ $("#digitaldata").click(function (event) {
     LPS = LPS.join('');
     console.log(LPS);
     $('#LPSdiffmench').text(LPS);
-    //Diff Mench()
+    //Diff Mench
     input_string_arr.push(input_string_arr[input_string_arr.length - 1]);
     let arr = [];
     arr = diffmanchesterencoder(input_string_arr);
@@ -825,13 +1122,17 @@ $("#digitaldata").click(function (event) {
   }
   else if (encoding_technique == "AMI") {
     $('#AMI').removeClass("ami");
-    $('#RZ').addClass("AMI");
+    $('#AMI').addClass("AMI");
     let LPS = [];
     LPS = longest_palindromic_substring(input_string_arr);
     LPS = LPS.join('');
     console.log(LPS);
     $('#LPSami').text(LPS);
-    //AMI()
+    //AMI
+    input_string_arr.push(input_string_arr[input_string_arr.length - 1]);
+    let arr = [];
+    arr = amiencoder(input_string_arr);
+    amicanvas(arr, input_string_arr);
   }
   else if (encoding_technique == "B8ZS") {
     $('#B8ZS').removeClass("b8zs");
@@ -976,13 +1277,20 @@ $("#conszeros").click(function (event) {
   }
   else if (encoding_technique == "AMI") {
     $('#AMI').removeClass("ami");
-    $('#RZ').addClass("AMI");
+    $('#AMI').addClass("AMI");
     let LPS = [];
     LPS = longest_palindromic_substring(Arr);
     LPS = LPS.join('');
     console.log(LPS);
     $('#LPSami').text(LPS);
-    //AMI()
+    let temp = [];
+    temp = Arr.join('');
+    $('#sub').text(temp);
+    //AMI
+    Arr.push(Arr[Arr.length - 1]);
+    let arr = [];
+    arr = amiencoder(Arr);
+    amicanvas(arr, Arr);
   }
   else if (encoding_technique == "B8ZS") {
     $('#B8ZS').removeClass("b8zs");
