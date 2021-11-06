@@ -104,6 +104,10 @@ function nrzLencoder(arr) {
     }
   }
   return encode;
+
+
+
+
 }
 //NRZI Encoder
 function nrzIencoder(arr) {
@@ -232,15 +236,64 @@ function amiencoder(arr) {
 
 //B8ZS Encoder
 function b8zsencoder(arr) {
-  let encode = [];
-
+  let len = arr.length;
+  let encode = new Array(len);
+  let count = 0;
+  let currBit = -1;
+  //Replace 8 consecutive zeros by 000VB0VB
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] == 0) {
+      count++;
+      if (count == 8) {
+        //V voilate AMI NO inversion
+        encode[i - 4] = currBit;
+        currBit = currBit * -1;
+        encode[i - 3] = currBit;
+        encode[i - 1] = currBit;
+        currBit = currBit * -1;
+        encode[i] = currBit;
+        count = 0;
+      }
+      else {
+        encode[i] = 0;
+      }
+    }
+    else if (arr[i] == 1) {
+      count = 0;
+      currBit = currBit * -1;
+      encode[i] = currBit;
+    }
+  }
   return encode;
 }
 
 //HDB3 Encoder
 function hdb3encoder(arr) {
-  let encode = [];
-
+  let len = arr.length;
+  let encode = new Array(len);
+  let currBit = -1;
+  let count = 0;
+  //Replace 4 consecutive zeros by B00V or 000V
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] == 0) {
+      count++;
+      if (count == 4) {
+        currBit = currBit * -1;
+        encode[i - 3] = currBit;
+        //voilate AMI
+        encode[i] = currBit;
+        count = 0;
+      }
+      else {
+        encode[i] = 0;
+      }
+    }
+    else if (arr[i] == 1) {
+      count = 0;
+      currBit = currBit * -1;
+      encode[i] = currBit;
+    }
+  }
   return encode;
 }
 
@@ -952,8 +1005,92 @@ function amicanvas(dataArray, labelArray) {
 //B8ZS Canvas
 function b8zscanvas(dataArray, labelArray) {
   var ctx = $('#B8ZSC');
-  labelArray = UpdatedLabelArray(labelArray);
+  const data = {
+    labels: labelArray,
+    datasets: [{
+      label: 'B8ZS Scrambling ',
+      data: dataArray,
+      fill: false,
+      stepped: true,
+      borderWidth: 2,
+      borderColor: 'rgb(182, 145, 78)',
+      backgroundColor: 'cyan',
+      cubicInterpolationMode: 'monotone'
+    }]
+  };
 
+  const options = {
+    aspectRatio: 4,
+    responsive: true,
+    interaction: {
+      intersect: false,
+      axis: 'x'
+    },
+    scales: {
+      y: {
+        ticks: {
+          color: "green",
+          font: {
+            weight: 800,
+          },
+          max: 2,
+          maxTicksLimit: 12,
+          stepSize: 1,
+          fontSize: 90,
+          fontWeight: 600
+        },
+        grid: {
+          color: 'rgba(99, 36, 180, 0.801)',
+          borderColor: 'cyan'
+        },
+        title: {
+          display: true,
+          text: "voltage",
+          align: "center",
+          color: "green",
+          font: {
+            weight: 700,
+          },
+        },
+
+      },
+      x: {
+        ticks: {
+          color: "green",
+          font: {
+            weight: 800,
+          },
+        },
+        grid: {
+          color: 'rgba(99, 36, 180, 0.801)',
+          borderColor: 'cyan'
+        },
+        title: {
+          display: true,
+          text: "data elements",
+          align: "center",
+          color: "green",
+          font: {
+            weight: 700,
+          },
+        },
+      },
+    },
+
+    plugins: {
+      legend: {
+        labels: {
+          color: "rgb(182, 145, 78)",
+          font: {
+            weight: 800
+          }
+        }
+      },
+      title: {
+        display: true,
+      }
+    }
+  }
 
   var myChart = new Chart(ctx, {
     type: "line",
@@ -965,7 +1102,92 @@ function b8zscanvas(dataArray, labelArray) {
 //HDB3 Canvas
 function hdb3canvas(dataArray, labelArray) {
   var ctx = $('#HDB3C');
-  labelArray = UpdatedLabelArray(labelArray);
+  const data = {
+    labels: labelArray,
+    datasets: [{
+      label: 'B8ZS Scrambling ',
+      data: dataArray,
+      fill: false,
+      stepped: true,
+      borderWidth: 2,
+      borderColor: 'rgb(182, 145, 78)',
+      backgroundColor: 'cyan',
+      cubicInterpolationMode: 'monotone'
+    }]
+  };
+
+  const options = {
+    aspectRatio: 4,
+    responsive: true,
+    interaction: {
+      intersect: false,
+      axis: 'x'
+    },
+    scales: {
+      y: {
+        ticks: {
+          color: "green",
+          font: {
+            weight: 800,
+          },
+          max: 2,
+          maxTicksLimit: 12,
+          stepSize: 1,
+          fontSize: 90,
+          fontWeight: 600
+        },
+        grid: {
+          color: 'rgba(99, 36, 180, 0.801)',
+          borderColor: 'cyan'
+        },
+        title: {
+          display: true,
+          text: "voltage",
+          align: "center",
+          color: "green",
+          font: {
+            weight: 700,
+          },
+        },
+
+      },
+      x: {
+        ticks: {
+          color: "green",
+          font: {
+            weight: 800,
+          },
+        },
+        grid: {
+          color: 'rgba(99, 36, 180, 0.801)',
+          borderColor: 'cyan'
+        },
+        title: {
+          display: true,
+          text: "data elements",
+          align: "center",
+          color: "green",
+          font: {
+            weight: 700,
+          },
+        },
+      },
+    },
+
+    plugins: {
+      legend: {
+        labels: {
+          color: "rgb(182, 145, 78)",
+          font: {
+            weight: 800
+          }
+        }
+      },
+      title: {
+        display: true,
+      }
+    }
+  }
 
 
   var myChart = new Chart(ctx, {
@@ -1041,7 +1263,7 @@ $("#digitaldata").click(function (event) {
     $('#LPSuni').text(LPS);
     //for Last bit siganal push last bit again
     input_string_arr.push(input_string_arr[input_string_arr.length - 1]);
-    //uniNrz()          
+    //uniNrz      
     //no encoding directly passing to cnavas generator function  
     uninrzcanvas(input_string_arr);
   }
@@ -1054,7 +1276,7 @@ $("#digitaldata").click(function (event) {
     LPS = LPS.join('');
     console.log(LPS);
     $('#LPSnrzl').text(LPS);
-    //NRZL()
+    //NRZL
     input_string_arr.push(input_string_arr[input_string_arr.length - 1]);
     let arr = [];
     arr = nrzLencoder(input_string_arr);
@@ -1069,7 +1291,7 @@ $("#digitaldata").click(function (event) {
     LPS = LPS.join('');
     console.log(LPS);
     $('#LPSnrzi').text(LPS);
-    //NRZI()
+    //NRZI
     input_string_arr.push(input_string_arr[input_string_arr.length - 1]);
     let arr = [];
     arr = nrzIencoder(input_string_arr);
@@ -1083,7 +1305,7 @@ $("#digitaldata").click(function (event) {
     LPS = LPS.join('');
     console.log(LPS);
     $('#LPSrz').text(LPS);
-    //rz()
+    //rz
     input_string_arr.push(input_string_arr[input_string_arr.length - 1]);
     let arr = [];
     arr = rzencoder(input_string_arr);
@@ -1136,13 +1358,18 @@ $("#digitaldata").click(function (event) {
   }
   else if (encoding_technique == "B8ZS") {
     $('#B8ZS').removeClass("b8zs");
-    $('#B8ZS').addClass("b8zs");
+    $('#B8ZS').addClass("B8ZS");
     let LPS = [];
     LPS = longest_palindromic_substring(input_string_arr);
     LPS = LPS.join('');
     console.log(LPS);
     $('#LPSb8zs').text(LPS);
-    //B8ZS()
+    //B8ZS
+    input_string_arr.push(input_string_arr[input_string_arr.length - 1]);
+    let arr = [];
+    arr = b8zsencoder(input_string_arr);
+    console.log(arr);
+    b8zscanvas(arr, input_string_arr);
   }
   else if (encoding_technique == "HDB3") {
     $('#HDB3').removeClass("hdb3");
@@ -1183,7 +1410,7 @@ $("#conszeros").click(function (event) {
     //for Last bit siganal push last bit again
     Arr.push(Arr[Arr.length - 1]);
 
-    //uniNrz()          
+    //uniNrz   
     //no encoding directly passing to cnavas generator function  
     uninrzcanvas(Arr);
     //Join method  removes , & add space as a delimiter
@@ -1200,7 +1427,7 @@ $("#conszeros").click(function (event) {
     let temp = [];
     temp = Arr.join('');
     $('#sub').text(temp);
-    //NRZL()
+    //NRZL
     Arr.push(Arr[Arr.length - 1]);
     let arr = [];
     arr = nrzLencoder(Arr);
@@ -1218,7 +1445,7 @@ $("#conszeros").click(function (event) {
     let temp = [];
     temp = Arr.join('');
     $('#sub').text(temp);
-    //NRZI()
+    //NRZI
     Arr.push(Arr[Arr.length - 1]);
     let arr = [];
     arr = nrzIencoder(Arr);
@@ -1235,7 +1462,7 @@ $("#conszeros").click(function (event) {
     let temp = [];
     temp = Arr.join('');
     $('#sub').text(temp);
-    //RZ()
+    //RZ
     Arr.push(Arr[Arr.length - 1]);
     let arr = [];
     arr = rzencoder(Arr);
@@ -1294,13 +1521,20 @@ $("#conszeros").click(function (event) {
   }
   else if (encoding_technique == "B8ZS") {
     $('#B8ZS').removeClass("b8zs");
-    $('#B8ZS').addClass("b8zs");
+    $('#B8ZS').addClass("B8ZS");
     let LPS = [];
     LPS = longest_palindromic_substring(Arr);
     LPS = LPS.join('');
     console.log(LPS);
     $('#LPSdiffmech').text(LPS);
-    //B8ZS()
+    let temp = [];
+    temp = Arr.join('');
+    $('#sub').text(temp);
+    //B8ZS
+    Arr.push(Arr[Arr.length - 1]);
+    let arr = [];
+    arr = b8zsencoder(Arr);
+    b8zscanvas(arr, Arr);
   }
   else if (encoding_technique == "HDB3") {
     $('#HDB3').removeClass("hdb3");
