@@ -1231,7 +1231,7 @@ $("#init").click(function (event) {
     $("#txt").text("MANCHESTER");
   }
   else if (encoding_technique == "Diff-Mench") {
-    $("#txt").text(" DIFFERENTAIL MANCHESTER  ");
+    $("#txt").text(" DIFFERENTIAL MANCHESTER  ");
   }
   else if (encoding_technique == "AMI") {
     $("#txt").text("ALTERNATE MARK INVERSION (AMI)");
