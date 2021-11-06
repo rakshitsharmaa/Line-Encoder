@@ -1102,10 +1102,11 @@ function b8zscanvas(dataArray, labelArray) {
 //HDB3 Canvas
 function hdb3canvas(dataArray, labelArray) {
   var ctx = $('#HDB3C');
+
   const data = {
     labels: labelArray,
     datasets: [{
-      label: 'B8ZS Scrambling ',
+      label: 'HDB3 Scrambling ',
       data: dataArray,
       fill: false,
       stepped: true,
@@ -1188,7 +1189,6 @@ function hdb3canvas(dataArray, labelArray) {
       }
     }
   }
-
 
   var myChart = new Chart(ctx, {
     type: "line",
@@ -1379,7 +1379,12 @@ $("#digitaldata").click(function (event) {
     LPS = LPS.join('');
     console.log(LPS);
     $('#LPShdb3').text(LPS);
-    //HDB3()
+    //HDB3
+    input_string_arr.push(input_string_arr[input_string_arr.length - 1]);
+    let arr = [];
+    arr = hdb3encoder(input_string_arr);
+    console.log(arr);
+    hdb3canvas(arr, input_string_arr);
   }
 });
 
@@ -1544,7 +1549,14 @@ $("#conszeros").click(function (event) {
     LPS = LPS.join('');
     console.log(LPS);
     $('#LPSHDB3').text(LPS);
+    let temp = [];
+    temp = Arr.join('');
+    $('#sub').text(temp);
     //HDB3
+    Arr.push(Arr[Arr.length - 1]);
+    let arr = [];
+    arr = hdb3encoder(Arr);
+    hdb3canvas(arr, Arr);
   }
 })
 
