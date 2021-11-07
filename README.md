@@ -1,5 +1,5 @@
 
-## Line Encoder
+# Line Encoder
 
 Web application developed using JQuery,Chart.js, HTML5, CSS3,Bootstrap
 for Digital data to Digital signal converter.
@@ -12,26 +12,24 @@ Latest Deployment:-
 
 ## Documentation
 
-### Digital Data Generation
+### Digital Data Generation:-
 
 Used JavaScript for digital data generation. Used **Manacher's Algorithm** for computing Longest Palandromic Substring in **O(N)** time complexity.
 
-### Encoding and Scrambling
+### Encoding and Scrambling:-
 
 Used JavaScript for various  encoding , scramling schemes.
 For digital signal generation used Chart.js v3.3.0.
 
 #### Here are some sample ScreenShots.
 
-![Alt text](images\Landing Section.png)
+###### Landing Section:-
+![Alt text](https://github.com/ashutosht-01/Line-Encoder/blob/master/images/Landing%20Section.png)
 
+###### Custom Digital Data Input:-
+![Alt text](https://github.com/ashutosht-01/Line-Encoder/blob/master/images/digital%20data%20input.png)
+![Alt text](https://github.com/ashutosht-01/Line-Encoder/blob/master/images/input%20digital%20data%20encoded%20signal.png)
 
-![Alt text](images\digital data input.png)
-
-
-![Alt text](images\input digital data encoded signal.png)
-
-
-![Alt text](images\fixed subsequence input.png)
-
-![Alt text](images\fixed subsequence encoded signal.png)
+###### No of consecutive zero Input:-
+![Alt text](https://github.com/ashutosht-01/Line-Encoder/blob/master/images/fixed%20subsequence%20input.png)
+![Alt text](https://github.com/ashutosht-01/Line-Encoder/blob/master/images/fixed%20subsequence%20encoded%20signal.png)
