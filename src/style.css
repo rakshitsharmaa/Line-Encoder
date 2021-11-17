@@ -5,6 +5,7 @@ body{
     overflow-x: hidden;
 }
 
+
 /* Navbar styling */
 .nav-container{
     display: flex;
@@ -38,39 +39,34 @@ body{
         font-size: 20px;
         text-decoration: none;
     }
+    .code-link:hover{
+        text-decoration: none;
+        color:cyan
+    }
     /* landing section styling */
     .landing-container{
-        display: flex;
-        min-height: 30vh;
-        justify-content: space-between;
-        align-items: center;
-        margin:0px;
-        flex-wrap: wrap;
+        position: relative;
+        text-align: center;
+        color: white;
     }
-    .img-container{
-        margin:0px;
-        width: 100%;
-        height: 60vh;
-        margin-bottom: 10vh;
-    }
+     .img-container{
+         margin:0px; 
+         width: 100vw; 
+         height:100%;
+     }
    /* data input container */
   .data-container1{
       display: none;
-    width:80vw;
-    background-color:rgba(32, 3, 70, 0.801);
-    min-height: 400px;
-    margin:72px;
+
   }
    .data-container2{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    position: absolute;
     width:80vw;
     background-color:rgba(32, 3, 70, 0.801);
     color: rgb(182, 145, 78);
-    min-height: 400px;
-   margin-left: 10vw;
-
+    min-height: 360px;
+    top:2vh;
+    left:10vw;
   }
   
   .text{
@@ -82,12 +78,10 @@ body{
 
     /* bottom input panel styling */
     
-    .bottom-panel{
-        width: 100%;
-        display: flex !important;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
+    #bottom-panel{
+        position: absolute;
+        top:35vh;
+        left: 20vw;
     }
     .form-group{
         margin-left: 4vw;
@@ -99,7 +93,9 @@ body{
     text-align: center;
     letter-spacing: 2px;
         font-family: 'IM Fell English SC', serif;
-        font-weight: 500;
+        font-weight: 800;
+        color:rgb(240, 227, 44);
+        line-height: 7vh;
     }
     .btn{
         margin-bottom: 2vh;
@@ -112,211 +108,170 @@ body{
         margin: 2vh 15vw;
     }
 
-
-
+    .subseq{
+        font-weight: 800;
+        line-height: 7vh;
+        margin-bottom: 0px;
+       }
+#sub{
+    letter-spacing: 4px;
+}
+       .subsequence{
+        display: none;
+       }
+       .Subsequence{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 50px;
+        margin-top: 20vh;
+        margin-bottom: 0px;
+       }
+       
     /* Encoding blocks */
 .uninrz{
     display: none;
-    width:90vw;
-    background-color:rgba(32, 3, 70, 0.801);
-    color: rgb(182, 145, 78);
-    min-height: 400px;
-    margin:72px;
 }
+#UniNRZC {
+    height: 250px !important;
+    }
    .NRZ-UniNRZ{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     width:90vw;
+    position: absolute;
+    top:55vh;
+    left:5vw;
     background-color:rgba(32, 3, 70, 0.801);
     color: rgb(182, 145, 78);
-    min-height: 400px;
-    margin-top: 10vh;
-    margin-bottom: 10vh;
-    margin-left:5vw;
+    min-height: 370px;
+    margin-top:8vh;
+    margin-bottom: 25px;
    }
 
    .nrzl{
     display: none;
-    width:90vw;
-    background-color:rgba(32, 3, 70, 0.801);
-    color: rgb(182, 145, 78);
-    min-height: 400px;
-    margin:72px;
 }
    .NRZL{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    position: absolute;
+    top:55vh;
     width:90vw;
     background-color:rgba(32, 3, 70, 0.801);
     color: rgb(182, 145, 78);
-    min-height: 400px;
-    margin-top: 10vh;
+    min-height: 370px;
+    margin-top: 8vh;
     margin-bottom: 10vh;
     margin-left:5vw;
    }
 
-   
    .nrzi{
     display: none;
-    width:90vw;
-    background-color:rgba(32, 3, 70, 0.801);
-    color: rgb(182, 145, 78);
-    min-height: 400px;
-    margin:72px;
 }
    .NRZI{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    position: absolute;
+    top:55vh;
     width:90vw;
     background-color:rgba(32, 3, 70, 0.801);
     color: rgb(182, 145, 78);
-    min-height: 400px;
-    margin-top: 10vh;
+    min-height: 370px;
+    max-height: 800px;
+    margin-top: 8vh;
     margin-bottom: 10vh;
     margin-left:5vw;
    }
-
-   
+ 
    .rz{
     display: none;
-    width:90vw;
-    background-color:rgba(32, 3, 70, 0.801);
-    color: rgb(182, 145, 78);
-    min-height: 400px;
-    margin:72px;
 }
    .RZ{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    position: absolute;
+    top:55vh;
     width:90vw;
     background-color:rgba(32, 3, 70, 0.801);
     color: rgb(182, 145, 78);
-    min-height: 400px;
-    margin-top: 10vh;
+    min-height: 370px;
+    margin-top: 8vh;
     margin-bottom: 10vh;
     margin-left:5vw;
    }
    
    .mench{
     display: none;
-    width:90vw;
-    background-color:rgba(32, 3, 70, 0.801);
-    color: rgb(182, 145, 78);
-    min-height: 400px;
-    margin:72px;
 }
    .MENCH{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    position: absolute;
+    top:55vh;
     width:90vw;
     background-color:rgba(32, 3, 70, 0.801);
     color: rgb(182, 145, 78);
-    min-height: 400px;
-    margin-top: 10vh;
+    min-height: 370px;
+    margin-top: 8vh;
     margin-bottom: 10vh;
     margin-left:5vw;
    }
    
-   .diffmech{
+   .diffmench{
     display: none;
-    width:90vw;
-    background-color:rgba(32, 3, 70, 0.801);
-    color: rgb(182, 145, 78);
-    min-height: 400px;
-    margin:72px; 
    }
    .DIFFMENCH{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    position: absolute;
+    top:55vh;
     width:90vw;
     background-color:rgba(32, 3, 70, 0.801);
     color: rgb(182, 145, 78);
-    min-height: 400px;
-    margin-top: 10vh;
-    margin-bottom: 10vh;
+    min-height: 370px;
+    margin-top: 8vh;
     margin-left:5vw;
+    margin-bottom: 10vh;
    }
    .ami{
     display: none;
-    width:90vw;
-    background-color:rgba(32, 3, 70, 0.801);
-    color: rgb(182, 145, 78);
-    min-height: 400px;
-    margin:72px;  
    }
    .AMI{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    position: absolute;
+    top:55vh;
     width:90vw;
+    margin-bottom: 10vh;
     background-color:rgba(32, 3, 70, 0.801);
     color: rgb(182, 145, 78);
-    min-height: 400px;
-    margin-top: 10vh;
-    margin-bottom: 10vh;
+    min-height: 370px;
+    margin-top: 8vh;
     margin-left:5vw;
    }
     .b8zs{
         display: none;
-        width:90vw;
-        background-color:rgba(32, 3, 70, 0.801);
-        color: rgb(182, 145, 78);
-        min-height: 400px;
-        margin:72px; 
     }
     .B8ZS{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        position: absolute;
+        top:55vh;
         width:90vw;
         background-color:rgba(32, 3, 70, 0.801);
         color: rgb(182, 145, 78);
-        min-height: 400px;
-        margin-top: 10vh;
+        min-height: 370px;
+        margin-top: 8vh;
         margin-bottom: 10vh;
         margin-left:5vw;
     }
     .hdb3{
-        display: none;
-        width:90vw;
-        background-color:rgba(32, 3, 70, 0.801);
-        color: rgb(182, 145, 78);
-        min-height: 400px;
-        margin:72px;   
+        display: none;  
     }
     .HDB3{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        position: absolute;
+        top:55vh;
         width:90vw;
         background-color:rgba(32, 3, 70, 0.801);
         color: rgb(182, 145, 78);
-        min-height: 400px;
-        margin-top: 10vh;
+        min-height: 370px;
+        margin-top: 8vh;
         margin-bottom: 10vh;
         margin-left:5vw;
     }
    .lps{
-       letter-spacing: 2px;
-       font-weight: 700;
-   
-   }
-
+       
+       font-weight: 800;
+       line-height: 7vh;
+       margin-top: 1vh;
+       margin-bottom: 0px;
+   }    
 
 
 
@@ -334,7 +289,7 @@ body{
     
  
     .icons{
-        width:30vw;
+     width:30vw;
     display: flex;
     margin-right: 2vw;
     justify-content: space-between;
@@ -352,6 +307,10 @@ body{
         font-size: 20px;
         color:wheat;
         text-decoration: none;
+    }
+    .link:hover{
+        text-decoration: none;
+        color:cyan
     }
     @media  (max-width:800px){
         .footer-container{

@@ -10,6 +10,7 @@
     <link rel="icon" href="./assets/favicon.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital@1&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@500;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -25,156 +26,158 @@
             <p class="flash-logo-text">Line Encoder</p>
         </div>
         <div class="nav-right">
-            <a target="_blank" class="code-link" href="https://github.com/ashutosht-01/FlashType">Code</a>
+            <a target="_blank" class="code-link" href="https://github.com/ashutosht-01/Line-Encoder">Code</a>
         </div>
     </div>
 
     <!-- Landing Section -->
     <div class="landing-container">
-        <img class="img-container"
-            src="https://previews.123rf.com/images/tampatra/tampatra1902/tampatra190200073/116336166-01-or-binary-numbers-on-the-computer-screen-on-monitor-matrix-background-digital-data-code-in-hacker.jpg"
+        <img src="https://besthqwallpapers.com/Temp/5-11-2021/digital-technology-background-with-zeros-and-ones-digital-blue-background-binary-code-background-digital-data-binary-code-texture-besthqwallpapers.com-1366x768.jpg"
             alt="img">
 
-    </div>
 
 
+        <!-- input bottom section -->
 
-    <!-- input bottom section -->
+        <div id="bottom-panel">
 
-    <div id="bottom-panel">
+            <form>
+                <div class="form-container">
+                    <h5 id="bt">Choose Your Digital Data Stream Generation Technique </h5>
+                    <div class="form-group1 ">
+                        <select name="" id="list-type" class="form-control">
+                            <option value="completely-random">Completely Random Sequence </option>
+                            <option value="sub-sequence"> Random Sequence with fixed Sub-Sequences</option>
 
-        <form>
-            <div class="form-container">
-                <h5 id="bt">Choose Your Digital Data Stream Generation Technique </h5>
-                <div class="form-group1 ">
-                    <select name="" id="list-type" class="form-control">
-                        <option value="completely-random">Completely Random Sequence </option>
-                        <option value="sub-sequence"> Random Sequence with fixed Sub-Sequences</option>
-
-                    </select>
+                        </select>
+                    </div>
                 </div>
-            </div>
 
-            <div class="form-container">
-                <h5 id="bt">Choose Your Encoding Technique </h5>
-                <div class="form-group ">
-                    <select name="" id="list-encoding" class="form-control">
-                        <option value="NRZ-UniNRZ">NRZ (NON - RETRUN - TO - ZERO UNIPOLAR) </option>
-                        <option value="NRZ-L">NRZ-L (NON-RETURN-TO-ZERO-LEVEL)</option>
-                        <option value="NRZ-I">NRZ-I (NON-RETURN-TO-ZERO-INVERT)</option>
-                        <option value="RZ">RZ (RETURN-TO-ZERO)</option>
-                        <option value="Mench"> MANCHESTER</option>
-                        <option value="Diff-Mench">DIFFERENTAIL MANCHESTER</option>
-                        <option value="AMI">AMI (ALTERNATE MARK INVERSION)</option>
-                        <option value="B8ZS"> B8ZS (BIPLOAR WITH 8-ZERO SUBSTITUTION)</option>
-                        <option value="HDB3"> HDB3 (HIGH-DENSITY-BIPOLAR 3-ZERO)</option>
-                    </select>
+                <div class="form-container">
+                    <h5 id="bt">Choose Your Encoding Technique </h5>
+                    <div class="form-group ">
+                        <select name="" id="list-encoding" class="form-control">
+                            <option value="NRZ-UniNRZ">NRZ (NON - RETRUN - TO - ZERO UNIPOLAR) </option>
+                            <option value="NRZ-L">NRZ-L (NON-RETURN-TO-ZERO-LEVEL)</option>
+                            <option value="NRZ-I">NRZ-I (NON-RETURN-TO-ZERO-INVERT)</option>
+                            <option value="RZ">RZ (RETURN-TO-ZERO)</option>
+                            <option value="Mench"> MANCHESTER</option>
+                            <option value="Diff-Mench">DIFFERENTIAL MANCHESTER</option>
+                            <option value="AMI">AMI (ALTERNATE MARK INVERSION)</option>
+                            <option value="B8ZS"> B8ZS (BIPLOAR WITH 8-ZERO SUBSTITUTION)</option>
+                            <option value="HDB3"> HDB3 (HIGH-DENSITY-BIPOLAR 3-ZERO)</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-success" id="init">Submit</button>
                 </div>
-                <button class="btn btn-success" id="init">Generate</button>
-            </div>
-        </form>
+            </form>
 
 
-    </div>
-
-
-    <!-- input data container -->
-    <div class="data-container1" id="dc">
-        <div class="encoding">
-            <p class="text" id="txt">
-
-            </p>
         </div>
-        <form>
-            <div class="form-container" id="binary-data">
-                <div class="form-group">
-                    <input type="text" class="form-control" id="digital-data" placeholder="Digital Data"
-                        autocomplete="off">
-                </div>
-                <button class="btn btn-success" id="digitaldata">Submit</button>
+
+
+        <!-- input data container -->
+        <div class="data-container1" id="dc">
+            <div class="encoding">
+                <p class="text" id="txt">
+
+                </p>
             </div>
-
-            <div class="form-container" id="numzeros">
-                <div class="form-group">
-                    <input type="text" class="form-control" id="numzr" placeholder="No of Consecutive Zeros"
-                        autocomplete="off">
+            <form>
+                <div class="form-container" id="binary-data">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="digital-data"
+                            placeholder="Enter Custom Digital Data " autocomplete="off">
+                    </div>
+                    <button class="btn btn-success" id="digitaldata">Generate</button>
                 </div>
-                <button class="btn btn-success" id="conszeros">Submit</button>
+
+                <div class="form-container" id="numzeros">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="numzr" placeholder="Minimum No of Consecutive Zeros"
+                            autocomplete="off">
+                    </div>
+                    <button class="btn btn-success" id="conszeros">Generate</button>
+                </div>
+
+            </form>
+            <div class="subsequence" id="seq">
+                <p class="subseq">GENERATED RANDOM SEQUENCE </p>
+                <p id="sub" class="subseq"></p>
             </div>
-        </form>
+        </div>
 
+        <!-- Encoding blocks -->
+
+        <!-- Unipolar NRZ -->
+        <div id="UNINRZ" class="uninrz">
+            <p class="lps">LONGEST PALINDROMIC SUBSTRING </p>
+            <p class="lps" id="LPSuni" style="letter-spacing: 3px;"> </p>
+            <canvas id="UniNRZC" width="400" height="400"></canvas>
+
+        </div>
+
+        <!-- NRZL -->
+        <div id="NRZL" class="nrzl">
+            <p class="lps">LONGEST PALINDROMIC SUBSTRING</p>
+            <p class="lps" id="LPSnrzl" style="letter-spacing: 3px;"> </p>
+            <canvas id="NRZLC" width="400" height="400"></canvas>
+        </div>
+
+        <!-- NRZI -->
+        <div id="NRZI" class="nrzi">
+            <p class="lps">LONGEST PALINDROMIC SUBSTRING</p>
+            <p class="lps" id="LPSnrzi" style="letter-spacing: 3px;"> </p>
+            <canvas id="NRZIC" width="400" height="400"></canvas>
+        </div>
+
+        <!-- RZ-->
+        <div id="RZ" class="rz">
+            <p class="lps">LONGEST PALINDROMIC SUBSTRING </p>
+            <p class="lps" id="LPSrz" style="letter-spacing: 3px;"> </p>
+            <canvas id="RZC" width="400" height="400"></canvas>
+        </div>
+
+        <!-- MANCHESTER -->
+        <div id="MENCH" class="mench">
+            <p class="lps">LONGEST PALINDROMIC SUBSTRING </p>
+            <p class="lps" id="LPSmench" style="letter-spacing: 3px;"> </p>
+            <canvas id="MENCHC" width="400" height="400"></canvas>
+        </div>
+
+        <!-- DIFFERENTAIL Mench -->
+
+        <div id="DIFFMENCH" class="diffmench">
+            <p class="lps">LONGEST PALINDROMIC SUBSTRING </p>
+            <p class="lps" id="LPSdiffmench" style="letter-spacing: 3px;"> </p>
+            <canvas id="DIFFMENCHC" width="400" height="400"></canvas>
+        </div>
+
+        <!-- AMI -->
+
+        <div id="AMI" class="ami">
+            <p class="lps">LONGEST PALINDROMIC SUBSTRING </p>
+            <p class="lps" id="LPSami" style="letter-spacing: 3px;"> </p>
+            <canvas id="AMIC" width="400" height="240"></canvas>
+        </div>
+
+        <!-- B8ZS -->
+
+        <div id="B8ZS" class="b8zs">
+            <p class="lps">LONGEST PALINDROMIC SUBSTRING </p>
+            <p class="lps" id="LPSb8zs" style="letter-spacing: 3px;"> </p>
+            <canvas id="B8ZSC" width="400" height="400"></canvas>
+        </div>
+
+        <!-- HDB3 -->
+
+        <div id="HDB3" class="hdb3">
+            <p class="lps">LONGEST PALINDROMIC SUBSTRING </p>
+            <p class="lps" id="LPShdb3" style="letter-spacing: 3px;"> </p>
+            <canvas id="HDB3C" width="400" height="400"></canvas>
+        </div>
 
     </div>
-
-    <!-- Encoding blocks -->
-
-    <!-- Unipolar NRZ -->
-    <div id="UNINRZ" class="uninrz">
-        <p class="lps">Longest Palindromic Substring :</p>
-        <p class="lps" id="LPSuni"> </p>
-        <canvas id="UniNRZC" width="400" height="400"></canvas>
-    </div>
-
-    <!-- NRZL -->
-    <div id="NRZL" class="nrzl">
-        <p class="lps">Longest Palindromic Substring :</p>
-        <p class="lps" id="LPSnrzl"> </p>
-        <canvas id="NRZLC" width="400" height="400"></canvas>
-    </div>
-
-    <!-- NRZI -->
-    <div id="NRZI" class="nrzi">
-        <p class="lps">Longest Palindromic Substring :</p>
-        <p class="lps" id="LPSnrzi"> </p>
-        <canvas id="NRZIC" width="400" height="400"></canvas>
-    </div>
-
-    <!-- RZ-->
-    <div id="RZ" class="rz">
-        <p class="lps">Longest Palindromic Substring :</p>
-        <p class="lps" id="LPSrz"> </p>
-        <canvas id="RZC" width="400" height="400"></canvas>
-    </div>
-
-    <!-- MANCHESTER -->
-    <div id="MENCH" class="mench">
-        <p class="lps">Longest Palindromic Substring :</p>
-        <p class="lps" id="LPSmench"> </p>
-        <canvas id="MENCHC" width="400" height="400"></canvas>
-    </div>
-
-    <!-- DIFFERENTAIL Mench -->
-
-    <div id="DIFFMENCH" class="diffmech">
-        <p class="lps">Longest Palindromic Substring :</p>
-        <p class="lps" id="LPSdiffmench"> </p>
-        <canvas id="DIFFMENCHC" width="400" height="400"></canvas>
-    </div>
-
-    <!-- AMI -->
-
-    <div id="AMI" class="ami">
-        <p class="lps">Longest Palindromic Substring :</p>
-        <p class="lps" id="LPSami"> </p>
-        <canvas id="AMIC" width="400" height="400"></canvas>
-    </div>
-
-    <!-- B8ZS -->
-
-    <div id="B8ZS" class="b8zs">
-        <p class="lps">Longest Palindromic Substring :</p>
-        <p class="lps" id="LPSb8zs"> </p>
-        <canvas id="B8ZSC" width="400" height="400"></canvas>
-    </div>
-
-    <!-- HDB3 -->
-
-    <div id="HDB3" class="hdb3">
-        <p class="lps">Longest Palindromic Substring :</p>
-        <p class="lps" id="LPShdb3"> </p>
-        <canvas id="HDB3C" width="400" height="400"></canvas>
-    </div>
-
 
     <!-- Footer -->
 
